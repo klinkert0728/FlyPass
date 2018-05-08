@@ -76,7 +76,7 @@ class UserMovements:Object,Mappable {
     func mapping(map: Map) {
         amount              <- map["amount"]
         lisencePlate        <- map["licensePlate"]
-        date                <- (map["date"],DateTransform())
+        date                <- (map["date"],dateTransform())
         movementDescription <- map["description"]
         movementId          <- map["movemnentId"]
     }

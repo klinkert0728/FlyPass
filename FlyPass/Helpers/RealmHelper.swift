@@ -74,8 +74,6 @@ open class dateTransform: TransformType {
     
     open func transformFromJSON(_ value: Any?) -> Date? {
         
-        
-        
         if let dateString = value as? String {
             
             if let date = check(withFormat: "yyyy-MM-dd", string: dateString) {
@@ -89,6 +87,12 @@ open class dateTransform: TransformType {
             }else if let date   = check(withFormat: "yyy-MM-dd'T'HH:mm:ss'Z'", string: dateString) {
                 return date
             }
+        }else if let timeInterval = value as? Double {
+            let doubleString = "\(timeInterval)"
+            let currentIndex = doubleString.index(doubleString.startIndex, offsetBy: doubleString.count - 6)
+            let newValue = doubleString[...currentIndex]
+
+            return Date(timeIntervalSince1970: Double(newValue)!)
             
         }
         return nil

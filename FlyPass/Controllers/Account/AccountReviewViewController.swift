@@ -75,4 +75,8 @@ extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource
         cell.configureMovementCell(movement: movements[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "History"
+    }
 }

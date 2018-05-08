@@ -29,7 +29,7 @@ class ResumeAccountTableViewCell: UITableViewCell {
     func configureMovementCell(movement:UserMovements) {
         lisencePlate.text           = "License Place: " + movement.lisencePlate
         movementDescription.text    = movement.movementDescription + ": \(movement.amount.formatCurrency())"
-        movementDate.text           = movement.date.string(custom: "dd/MM/yyyy HH:mm")
+        movementDate.text           = "Date: " + movement.date.string(custom: "dd MMMM yyyy HH:mm")
     }
 
 }
