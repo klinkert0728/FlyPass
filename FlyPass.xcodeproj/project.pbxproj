@@ -8,11 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		96BDAFA820A2191C00D4A42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFA720A2191C00D4A42E /* AppDelegate.swift */; };
-		96BDAFAA20A2191C00D4A42E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFA920A2191C00D4A42E /* ViewController.swift */; };
 		96BDAFAD20A2191C00D4A42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BDAFAB20A2191C00D4A42E /* Main.storyboard */; };
 		96BDAFAF20A2191C00D4A42E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96BDAFAE20A2191C00D4A42E /* Assets.xcassets */; };
 		96BDAFB220A2191C00D4A42E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BDAFB020A2191C00D4A42E /* LaunchScreen.storyboard */; };
 		96BDAFBD20A2191C00D4A42E /* FlyPassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFBC20A2191C00D4A42E /* FlyPassTests.swift */; };
+		96BDAFC920A21CDB00D4A42E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFC820A21CDB00D4A42E /* APIClient.swift */; };
+		96BDAFCB20A21D5300D4A42E /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFCA20A21D5300D4A42E /* APIEndpoint.swift */; };
+		96BDAFCD20A2202300D4A42E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFCC20A2202300D4A42E /* Endpoint.swift */; };
+		96BDAFD020A2297900D4A42E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFCF20A2297900D4A42E /* User.swift */; };
+		96BDAFD420A22EFF00D4A42E /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFD320A22EFF00D4A42E /* BaseTableViewController.swift */; };
+		96BDAFD720A22F5200D4A42E /* RealmMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFD620A22F5200D4A42E /* RealmMigration.swift */; };
+		96BDAFD920A22F6F00D4A42E /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFD820A22F6F00D4A42E /* RealmHelper.swift */; };
+		96BDAFDB20A22F9800D4A42E /* Apearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFDA20A22F9800D4A42E /* Apearance.swift */; };
+		96BDAFDD20A22FC800D4A42E /* FlypassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFDC20A22FC800D4A42E /* FlypassExtensions.swift */; };
+		96BDAFE020A2342900D4A42E /* AccountReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFDF20A2342900D4A42E /* AccountReviewViewController.swift */; };
+		96BDAFE420A2349F00D4A42E /* ResumeAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFE320A2349F00D4A42E /* ResumeAccountView.swift */; };
+		96BDAFE620A23D9200D4A42E /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFE520A23D9200D4A42E /* BaseNavigationViewController.swift */; };
+		96BDAFE920A242EB00D4A42E /* ResumeAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFE820A242EB00D4A42E /* ResumeAccountTableViewCell.swift */; };
+		A0A67A9CC122176CD0FF0D7E /* Pods_FlyPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */; };
+		C8DDB9A21D3ABCBE206130EF /* Pods_FlyPassTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2AF3ECFED3D79D6BD5B8D6B7 /* Pods-FlyPassTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.debug.xcconfig"; sourceTree = "<group>"; };
+		32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.release.xcconfig"; sourceTree = "<group>"; };
+		79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BDAFA420A2191C00D4A42E /* FlyPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlyPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BDAFA720A2191C00D4A42E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		96BDAFA920A2191C00D4A42E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		96BDAFAC20A2191C00D4A42E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96BDAFAE20A2191C00D4A42E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96BDAFB120A2191C00D4A42E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +53,21 @@
 		96BDAFB820A2191C00D4A42E /* FlyPassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlyPassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BDAFBC20A2191C00D4A42E /* FlyPassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyPassTests.swift; sourceTree = "<group>"; };
 		96BDAFBE20A2191C00D4A42E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96BDAFC820A21CDB00D4A42E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		96BDAFCA20A21D5300D4A42E /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		96BDAFCC20A2202300D4A42E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		96BDAFCF20A2297900D4A42E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96BDAFD320A22EFF00D4A42E /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		96BDAFD620A22F5200D4A42E /* RealmMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigration.swift; sourceTree = "<group>"; };
+		96BDAFD820A22F6F00D4A42E /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		96BDAFDA20A22F9800D4A42E /* Apearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apearance.swift; sourceTree = "<group>"; };
+		96BDAFDC20A22FC800D4A42E /* FlypassExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlypassExtensions.swift; sourceTree = "<group>"; };
+		96BDAFDF20A2342900D4A42E /* AccountReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountReviewViewController.swift; sourceTree = "<group>"; };
+		96BDAFE320A2349F00D4A42E /* ResumeAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeAccountView.swift; sourceTree = "<group>"; };
+		96BDAFE520A23D9200D4A42E /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		96BDAFE820A242EB00D4A42E /* ResumeAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeAccountTableViewCell.swift; sourceTree = "<group>"; };
+		C46486592AF641FFA884A578 /* Pods-FlyPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.release.xcconfig"; sourceTree = "<group>"; };
+		F97F586DFE9CE37011DC4F30 /* Pods-FlyPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A67A9CC122176CD0FF0D7E /* Pods_FlyPass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,18 +83,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8DDB9A21D3ABCBE206130EF /* Pods_FlyPassTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EF37FEA33ADA5640D5B9E0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */,
+				32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AC0258047E07157D4100328 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F97F586DFE9CE37011DC4F30 /* Pods-FlyPass.debug.xcconfig */,
+				C46486592AF641FFA884A578 /* Pods-FlyPass.release.xcconfig */,
+				2AF3ECFED3D79D6BD5B8D6B7 /* Pods-FlyPassTests.debug.xcconfig */,
+				5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		96BDAF9B20A2191C00D4A42E = {
 			isa = PBXGroup;
 			children = (
 				96BDAFA620A2191C00D4A42E /* FlyPass */,
 				96BDAFBB20A2191C00D4A42E /* FlyPassTests */,
 				96BDAFA520A2191C00D4A42E /* Products */,
+				6AC0258047E07157D4100328 /* Pods */,
+				1EF37FEA33ADA5640D5B9E0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,8 +133,12 @@
 		96BDAFA620A2191C00D4A42E /* FlyPass */ = {
 			isa = PBXGroup;
 			children = (
+				96BDAFE120A2347500D4A42E /* Views */,
+				96BDAFD520A22F2F00D4A42E /* Helpers */,
+				96BDAFD120A22EC500D4A42E /* Controllers */,
+				96BDAFCE20A2296300D4A42E /* Models */,
+				96BDAFC720A21C8400D4A42E /* Network */,
 				96BDAFA720A2191C00D4A42E /* AppDelegate.swift */,
-				96BDAFA920A2191C00D4A42E /* ViewController.swift */,
 				96BDAFAB20A2191C00D4A42E /* Main.storyboard */,
 				96BDAFAE20A2191C00D4A42E /* Assets.xcassets */,
 				96BDAFB020A2191C00D4A42E /* LaunchScreen.storyboard */,
@@ -96,6 +156,78 @@
 			path = FlyPassTests;
 			sourceTree = "<group>";
 		};
+		96BDAFC720A21C8400D4A42E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFC820A21CDB00D4A42E /* APIClient.swift */,
+				96BDAFCA20A21D5300D4A42E /* APIEndpoint.swift */,
+				96BDAFCC20A2202300D4A42E /* Endpoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		96BDAFCE20A2296300D4A42E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFCF20A2297900D4A42E /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96BDAFD120A22EC500D4A42E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFDE20A2340800D4A42E /* Account */,
+				96BDAFD220A22EED00D4A42E /* BaseControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		96BDAFD220A22EED00D4A42E /* BaseControllers */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFD320A22EFF00D4A42E /* BaseTableViewController.swift */,
+				96BDAFE520A23D9200D4A42E /* BaseNavigationViewController.swift */,
+			);
+			path = BaseControllers;
+			sourceTree = "<group>";
+		};
+		96BDAFD520A22F2F00D4A42E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFD620A22F5200D4A42E /* RealmMigration.swift */,
+				96BDAFD820A22F6F00D4A42E /* RealmHelper.swift */,
+				96BDAFDA20A22F9800D4A42E /* Apearance.swift */,
+				96BDAFDC20A22FC800D4A42E /* FlypassExtensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		96BDAFDE20A2340800D4A42E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFDF20A2342900D4A42E /* AccountReviewViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		96BDAFE120A2347500D4A42E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFE220A2347C00D4A42E /* Account */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96BDAFE220A2347C00D4A42E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				96BDAFE320A2349F00D4A42E /* ResumeAccountView.swift */,
+				96BDAFE820A242EB00D4A42E /* ResumeAccountTableViewCell.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +235,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96BDAFC120A2191C00D4A42E /* Build configuration list for PBXNativeTarget "FlyPass" */;
 			buildPhases = (
+				8E80A54FF9D2F32681F27AC9 /* [CP] Check Pods Manifest.lock */,
 				96BDAFA020A2191C00D4A42E /* Sources */,
 				96BDAFA120A2191C00D4A42E /* Frameworks */,
 				96BDAFA220A2191C00D4A42E /* Resources */,
+				BA7492C3A2F11AA6098E18E1 /* [CP] Embed Pods Frameworks */,
+				8681CDC19430D92109AF0AF9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +255,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96BDAFC420A2191C00D4A42E /* Build configuration list for PBXNativeTarget "FlyPassTests" */;
 			buildPhases = (
+				308034B8EC2D0258C77612CB /* [CP] Check Pods Manifest.lock */,
 				96BDAFB420A2191C00D4A42E /* Sources */,
 				96BDAFB520A2191C00D4A42E /* Frameworks */,
 				96BDAFB620A2191C00D4A42E /* Resources */,
+				D2F94CA6832A22574031BD90 /* [CP] Embed Pods Frameworks */,
+				8DAABA8099DC3499023EB152 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,13 +332,149 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		308034B8EC2D0258C77612CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlyPassTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8681CDC19430D92109AF0AF9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DAABA8099DC3499023EB152 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E80A54FF9D2F32681F27AC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlyPass-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA7492C3A2F11AA6098E18E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SBPickerSelector/SBPickerSelector.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBPickerSelector.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2F94CA6832A22574031BD90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		96BDAFA020A2191C00D4A42E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96BDAFAA20A2191C00D4A42E /* ViewController.swift in Sources */,
+				96BDAFE620A23D9200D4A42E /* BaseNavigationViewController.swift in Sources */,
+				96BDAFD420A22EFF00D4A42E /* BaseTableViewController.swift in Sources */,
 				96BDAFA820A2191C00D4A42E /* AppDelegate.swift in Sources */,
+				96BDAFD720A22F5200D4A42E /* RealmMigration.swift in Sources */,
+				96BDAFE020A2342900D4A42E /* AccountReviewViewController.swift in Sources */,
+				96BDAFD020A2297900D4A42E /* User.swift in Sources */,
+				96BDAFC920A21CDB00D4A42E /* APIClient.swift in Sources */,
+				96BDAFD920A22F6F00D4A42E /* RealmHelper.swift in Sources */,
+				96BDAFE420A2349F00D4A42E /* ResumeAccountView.swift in Sources */,
+				96BDAFDD20A22FC800D4A42E /* FlypassExtensions.swift in Sources */,
+				96BDAFE920A242EB00D4A42E /* ResumeAccountTableViewCell.swift in Sources */,
+				96BDAFCB20A21D5300D4A42E /* APIEndpoint.swift in Sources */,
+				96BDAFDB20A22F9800D4A42E /* Apearance.swift in Sources */,
+				96BDAFCD20A2202300D4A42E /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +625,7 @@
 		};
 		96BDAFC220A2191C00D4A42E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F97F586DFE9CE37011DC4F30 /* Pods-FlyPass.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -366,6 +641,7 @@
 		};
 		96BDAFC320A2191C00D4A42E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C46486592AF641FFA884A578 /* Pods-FlyPass.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,6 +657,7 @@
 		};
 		96BDAFC520A2191C00D4A42E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AF3ECFED3D79D6BD5B8D6B7 /* Pods-FlyPassTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -398,6 +675,7 @@
 		};
 		96BDAFC620A2191C00D4A42E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
