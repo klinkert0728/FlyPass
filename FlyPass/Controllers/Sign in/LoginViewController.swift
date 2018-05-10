@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LoginViewController: BaseViewController {
-
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    var successLogin:(()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +25,25 @@ class LoginViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func signInAction(_ sender: Any) {
+        guard let documentIdText = emailField.text, let currentPassword = passwordField.text, !documentIdText.isEmpty && !currentPassword.isEmpty else {
+            SVProgressHUD.showInfo(withStatus: "")
+            return
+        }
+        signIn(userId: documentIdText, userPassword: currentPassword)
+    }
+    
+    fileprivate func signIn(userId:String,userPassword:String) {
+        SVProgressHUD.show()
+        User.authenticateUser(documentId: userId, password: userPassword, successCallback: {
+            SVProgressHUD.dismiss()
+            self.successLogin?()
+        }, errorCallback: { error in
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+        })
+    }
+    
     /*
     // MARK: - Navigation
 

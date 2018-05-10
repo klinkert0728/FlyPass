@@ -101,20 +101,21 @@ class APIClient {
                     
                     return
                 }
+                guard let statusCode = response.response?.statusCode else {
+                    let newError = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey:"Illegal login response."])
+                    errorClosure(newError)
+                    return
+                }
                 
-                if let err = dict["error"] as? String, let statusCode = dict["statusCode"] as? Int {
-                    if let message = dict["message"] as? String {
-                        
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
-                        
-                        errorClosure(newError)
-                    }
-                    else {
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error: \(err); Http code: \(statusCode)"])
+                if let err = dict["error_description"] as? String  {
+                    let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:err])
+                    
+                    errorClosure(newError)
+                }else {
+                        let newError = NSError(domain: "", code:statusCode, userInfo: [NSLocalizedDescriptionKey: "Error: ; Http code: \(statusCode)"])
                         errorClosure(newError)
                     }
                 }
-            }
         })
     }
     

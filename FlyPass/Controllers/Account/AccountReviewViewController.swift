@@ -9,23 +9,25 @@
 import UIKit
 import  SVProgressHUD
 
-class AccountReviewViewController: UIViewController {
+class AccountReviewViewController: BaseViewController {
 
     @IBOutlet weak var movementTableview: UITableView!
     @IBOutlet weak var resumeAccountView: ResumeAccountView!
-    fileprivate var user:User?
     fileprivate var movements = [UserMovements]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInformation()
+    }
+    
+    override func configureAppearance() {
+        super.configureAppearance()
         title                                           = "Fly pass"
         movementTableview.delegate                      = self
         movementTableview.dataSource                    = self
         movementTableview.estimatedRowHeight            = 100
         movementTableview.rowHeight                     = UITableViewAutomaticDimension
         movementTableview.tableFooterView               = UIView()
-        getUserInformation()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,11 +35,28 @@ class AccountReviewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !User.isLoggedIn {
+            let loginNavigation = NavigationHelper.signInNavigationViewController()
+            let loginViewController = loginNavigation.topViewController as?  LoginViewController
+            navigationController?.present(loginNavigation, animated: true, completion: nil)
+            loginViewController?.successLogin = { [weak self] in
+                self?.navigationController?.dismiss(animated: true, completion: nil)
+                self?.getUserInformation()
+            }
+        }
+    }
+    
     fileprivate func getUserInformation() {
+        if !User.isLoggedIn {
+            return
+        }
         SVProgressHUD.show()
         User.getUserInformation(successCallback: { (currentUser) in
-            self.user = currentUser
             UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
+                self.movements.removeAll()
                 self.movements = userMovements
                 self.movementTableview.reloadData()
             }, errorCallback: { (error) in
@@ -46,14 +65,14 @@ class AccountReviewViewController: UIViewController {
             })
             self.configureResumeView()
             SVProgressHUD.dismiss()
-        }, errorCallback: {error in
+        }, errorCallback: { error in
             SVProgressHUD.dismiss()
             SVProgressHUD.show(withStatus: error.localizedDescription)
         })
     }
     
     fileprivate func configureResumeView() {
-        guard let user = user else {
+        guard let user = User.currentUser else {
             return
         }
         resumeAccountView.configureView(user: user)

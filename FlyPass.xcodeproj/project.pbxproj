@@ -29,6 +29,7 @@
 		96BDAFEE20A25EDD00D4A42E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFED20A25EDD00D4A42E /* BaseViewController.swift */; };
 		96BDAFF320A25F3F00D4A42E /* SingIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BDAFF220A25F3F00D4A42E /* SingIn.storyboard */; };
 		96BDAFF520A2603B00D4A42E /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */; };
+		96D1884320A4954100F0D3D8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */; };
 		A0A67A9CC122176CD0FF0D7E /* Pods_FlyPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */; };
 		C8DDB9A21D3ABCBE206130EF /* Pods_FlyPassTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		96BDAFED20A25EDD00D4A42E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		96BDAFF220A25F3F00D4A42E /* SingIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingIn.storyboard; sourceTree = "<group>"; };
 		96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
+		96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C46486592AF641FFA884A578 /* Pods-FlyPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.release.xcconfig"; sourceTree = "<group>"; };
 		F97F586DFE9CE37011DC4F30 /* Pods-FlyPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 		96BDAFD120A22EC500D4A42E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				96D1884120A4951500F0D3D8 /* Settings */,
 				96BDAFEA20A25EAF00D4A42E /* Sign in */,
 				96BDAFDE20A2340800D4A42E /* Account */,
 				96BDAFD220A22EED00D4A42E /* BaseControllers */,
@@ -254,6 +257,14 @@
 				96BDAFF220A25F3F00D4A42E /* SingIn.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		96D1884120A4951500F0D3D8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,6 +509,7 @@
 				96BDAFE020A2342900D4A42E /* AccountReviewViewController.swift in Sources */,
 				96BDAFD020A2297900D4A42E /* User.swift in Sources */,
 				96BDAFC920A21CDB00D4A42E /* APIClient.swift in Sources */,
+				96D1884320A4954100F0D3D8 /* SettingsTableViewController.swift in Sources */,
 				96BDAFD920A22F6F00D4A42E /* RealmHelper.swift in Sources */,
 				96BDAFE420A2349F00D4A42E /* ResumeAccountView.swift in Sources */,
 				96BDAFDD20A22FC800D4A42E /* FlypassExtensions.swift in Sources */,

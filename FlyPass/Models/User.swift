@@ -23,6 +23,24 @@ class User: Object,Mappable {
     dynamic var monthlyAverageConsumption   = 0.0
     var userMovements                       = List<UserMovements>()
     
+    class var currentUser:User? {
+        var user:User? = nil
+        Realm.update { (realm) in
+            user = realm.objects(User.self).first
+        }
+        return user
+    }
+    
+    class var isLoggedIn:Bool {
+        return currentUser != nil
+    }
+    
+    class func logOut() {
+        Realm.update { (realm) in
+            realm.delete(realm.objects(User.self))
+        }
+    }
+    
     convenience required init?(map: Map) {
         self.init()
     }
@@ -34,7 +52,6 @@ class User: Object,Mappable {
     func mapping(map: Map) {
         
         fullname                    <- map["body.secureUser.person.fullName"]
-        token                       <- map[""]
         documentType                <- map["body.secureUser.person.documentType"]
         documentId                  <- map["body.secureUser.person.document"]
         availableAmount             <- map["body.availableAmount"]
@@ -47,9 +64,30 @@ class User: Object,Mappable {
     class func getUserInformation(successCallback:@escaping (_ user:User)->(),errorCallback:@escaping (_ error:Error)->()) {
         APIClient.sharedClient.requestObject(endpoint: flypassEndpoint.userInformation(), completionHandler: { (user:User) in
             Realm.update(updateClosure: { (realm) in
-                realm.add(user, update: true)
+                if let currentUser = realm.objects(User.self).first {
+                    user.token  = currentUser.token
+                    realm.add(user, update: true)
+                }
             })
             successCallback(user)
+        }, errorClosure: {error in
+            errorCallback(error)
+        })
+    }
+    
+    class func authenticateUser(documentId:String,password:String,successCallback:@escaping()->(),errorCallback:@escaping(_ error:Error)->()) {
+        APIClient.sharedClient.requestJSONObject(endpoint: flypassEndpoint.login(userDocument: documentId, password: password), completionHandler: { (json) in
+            guard let jsonDict = json as? [String:Any] else {
+                errorCallback(NSError(domain: "", code: 422, userInfo: [NSLocalizedDescriptionKey:"Bad response"]))
+                return
+            }
+            Realm.update(updateClosure: { (realm) in
+                let user = User()
+                user.documentId = documentId
+                user.token      = (jsonDict["access_token"] as? String) ?? ""
+                realm.add(user)
+            })
+            successCallback()
         }, errorClosure: {error in
             errorCallback(error)
         })

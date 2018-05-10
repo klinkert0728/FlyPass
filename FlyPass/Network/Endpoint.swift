@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 
 enum flypassEndpoint {
-    
+    case login(userDocument:String,password:String)
     case userInformation()
     case getUserMovements(page:Int)
     
@@ -31,18 +31,20 @@ extension flypassEndpoint:APIEndpoint {
     
     var path: String {
         switch self {
+        case .login(userDocument: _, password: _):
+            return "secure/oauth/token"
         case .userInformation():
             return "user-service/userinformation"
-        case .getUserMovements(page: let page):
+        case .getUserMovements(page: _):
             return "report/userMovements"
-        default :
-            return ""
         }
         
     }
     
     var method: HTTPMethod {
         switch self {
+        case .login(userDocument: _, password: _):
+            return .post
         default:
             return .get
         }
@@ -50,6 +52,8 @@ extension flypassEndpoint:APIEndpoint {
     
     var parameters: [String: Any]? {
         switch self {
+        case .login(userDocument: let userDocument, password: let password):
+            return ["client_id":"flypass","grant_type":"password","username":userDocument,"password":password]
         case .getUserMovements(page: let page):
             return ["page":page]
         default:
@@ -67,9 +71,11 @@ extension flypassEndpoint:APIEndpoint {
     
     var customHTTPHeaders: [String: String]? {
         switch self {
+        case .login(userDocument: _, password: _):
+            return ["Authorization":"Basic Zmx5cGFzczpSbXg1ZEdWamFDNHlNREUz"]
         default:
             //let token = KNMTCAppEngine.activeAppEngine()?.sessionManager.activeSession()?.token ?? ""
-            let token = ""
+            let token = User.currentUser?.token ?? ""
             return ["Authorization": "Bearer \(token)"]
         }
     }
