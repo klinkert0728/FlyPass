@@ -31,6 +31,7 @@ class LoginViewController: BaseViewController {
     fileprivate func initViewModel() {
         viewModel = LoginViewModel()
     }
+    
     override func configureAppearance() {
         emailField.delegate     = self
         passwordField.delegate  = self
@@ -41,7 +42,7 @@ class LoginViewController: BaseViewController {
             SVProgressHUD.showInfo(withStatus: "")
             return
         }
-        viewModel?.signIn(userId:documentIdText, userPassword: currentPassword, successClosure: successLogin!)
+        viewModel?.signIn(userId:documentIdText, userPassword: currentPassword, successClosure: successLogin)
     }
     
     @objc func moveKeyboard(notification:NSNotification) {
@@ -49,21 +50,18 @@ class LoginViewController: BaseViewController {
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
         if notification.name == NSNotification.Name.UIKeyboardWillHide {
-            UIView.animate(withDuration: 0.1, animations: { () -> Void in
-                
+            UIView.animate(withDuration: 0.1, animations: {
                 self.view.frame.origin.y = 64
             })
             
         }else {
-            UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            UIView.animate(withDuration: 0.1, animations: {
                 guard let navigation = self.navigationController else {
                     return
                 }
                 let min = navigation.navigationBar.frame.maxY
                 let value = keyboardFrame.height - (self.view.frame.height - self.emailField!.frame.maxY - 5)
                 self.view.frame.origin.y = -(self.clamp(value: value, minValue: -min, maxValue:keyboardFrame.height))
-                
-                // self.view.frame.origin.y = -(keyboardFrame.size.height * 0.4)
             })
         }
     }

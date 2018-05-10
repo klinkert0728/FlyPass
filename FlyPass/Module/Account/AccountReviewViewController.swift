@@ -14,7 +14,7 @@ enum tableViewConstants {
 }
 
 class AccountReviewViewController: BaseViewController {
-
+    
     @IBOutlet weak var movementTableview: UITableView!
     @IBOutlet weak var resumeAccountView: ResumeAccountView!
     
@@ -29,14 +29,21 @@ class AccountReviewViewController: BaseViewController {
         
         viewModel = AccountReviewViewControllerViewModel()
         viewModel?.fetchUserInformation()
-        viewModel?.fetchUserMovements()
-        viewModel?.reloadTableViewClosure = { [weak self] in
-            self?.movementTableview.reloadData()
-        }
-        
+        upateMovements()
         viewModel?.reloadUserInfoView = { [weak self] in
             self?.configureResumeView()
         }
+    }
+    
+    fileprivate func upateMovements() {
+        SVProgressHUD.show()
+        viewModel?.fetchUserMovements(successClosure: { [weak self] in
+            SVProgressHUD.dismiss()
+            self?.movementTableview.reloadData()
+            }, errorClosure: { (error) in
+                SVProgressHUD.dismiss()
+                SVProgressHUD.show(withStatus: error.localizedDescription)
+        })
     }
     
     override func configureAppearance() {
@@ -48,7 +55,7 @@ class AccountReviewViewController: BaseViewController {
         movementTableview.rowHeight                     = UITableViewAutomaticDimension
         movementTableview.tableFooterView               = UIView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -64,7 +71,7 @@ class AccountReviewViewController: BaseViewController {
             loginViewController?.successLogin = { [weak self] in
                 self?.navigationController?.dismiss(animated: true, completion: nil)
                 self?.viewModel?.fetchUserInformation()
-                self?.viewModel?.fetchUserMovements()
+                self?.upateMovements()
             }
         }
     }

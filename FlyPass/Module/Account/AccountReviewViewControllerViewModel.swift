@@ -17,33 +17,24 @@ protocol AccountReviewViewModel {
 
 class AccountReviewViewControllerViewModel:AccountReviewViewModel {
     
-    var reloadTableViewClosure: (()->())?
     var reloadUserInfoView:(()->())?
     
-    var movements: [UserMovements] = [] {
-        didSet {
-            reloadTableViewClosure?()
-        }
-    }
+    var movements: [UserMovements] = [] 
     var user: User? {
         didSet {
             reloadUserInfoView?()
         }
     }
     
-    
-    func fetchUserMovements() {
+    func fetchUserMovements(successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error)->()) {
         if !User.isLoggedIn {
+            successClosure()
             return
         }
-        SVProgressHUD.show()
         UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
-           self.movements = userMovements
-            SVProgressHUD.dismiss()
-        }, errorCallback: { (error) in
-            SVProgressHUD.dismiss()
-            SVProgressHUD.show(withStatus: error.localizedDescription)
-        })
+            self.movements = userMovements
+            successClosure()
+        }, errorCallback: errorClosure)
     }
     
     func fetchUserInformation() {
