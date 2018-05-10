@@ -33,6 +33,9 @@ class AccountReviewViewControllerViewModel:AccountReviewViewModel {
     
     
     func fetchUserMovements() {
+        if !User.isLoggedIn {
+            return
+        }
         SVProgressHUD.show()
         UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
            self.movements = userMovements
