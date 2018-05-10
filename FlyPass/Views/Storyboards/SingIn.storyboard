@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PeQ-D2-iqx">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,36 +15,49 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NYm-vb-noc" customClass="LoginViewController" customModule="FlyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J8c-PJ-7LO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="qlu-P8-Bdg">
-                                <rect key="frame" x="112" y="84" width="150" height="150"/>
+                                <rect key="frame" x="259" y="84" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="O4d-9m-qJa"/>
-                                    <constraint firstAttribute="width" constant="150" id="rpT-wI-gwp"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="O4d-9m-qJa">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="250"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="150" id="rpT-wI-gwp">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="250"/>
+                                    </constraint>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="documentId" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdX-NY-bdZ">
-                                <rect key="frame" x="20" y="316" width="335" height="35"/>
+                                <rect key="frame" x="20" y="484.5" width="728" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="B30-9T-wH5"/>
+                                    <constraint firstAttribute="height" constant="35" id="B30-9T-wH5">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="55"/>
+                                    </constraint>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-AQ-aqo">
-                                <rect key="frame" x="20" y="361" width="335" height="35"/>
+                                <rect key="frame" x="20" y="549.5" width="728" height="55"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtS-YY-Eih">
-                                <rect key="frame" x="20" y="426" width="335" height="40"/>
+                                <rect key="frame" x="20" y="634.5" width="728" height="60"/>
                                 <color key="backgroundColor" red="0.74509803919999995" green="0.85098039219999999" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="L1c-bS-eNA"/>
+                                    <constraint firstAttribute="height" constant="40" id="L1c-bS-eNA">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,7 +83,7 @@
                             <constraint firstItem="g0c-AQ-aqo" firstAttribute="top" secondItem="ZdX-NY-bdZ" secondAttribute="bottom" constant="10" id="MWR-SL-ch3"/>
                             <constraint firstItem="g0c-AQ-aqo" firstAttribute="height" secondItem="ZdX-NY-bdZ" secondAttribute="height" id="NEc-R3-fUu"/>
                             <constraint firstItem="dtS-YY-Eih" firstAttribute="top" secondItem="g0c-AQ-aqo" secondAttribute="bottom" constant="30" id="O6P-NR-Xvb"/>
-                            <constraint firstItem="ZdX-NY-bdZ" firstAttribute="top" secondItem="qlu-P8-Bdg" secondAttribute="bottom" priority="999" constant="5" id="PDQ-nW-Ycf"/>
+                            <constraint firstItem="ZdX-NY-bdZ" firstAttribute="top" secondItem="qlu-P8-Bdg" secondAttribute="bottom" priority="999" constant="20" id="PDQ-nW-Ycf"/>
                             <constraint firstItem="g0c-AQ-aqo" firstAttribute="leading" secondItem="ZdX-NY-bdZ" secondAttribute="leading" id="dOB-6D-f82"/>
                             <constraint firstItem="MZR-MS-4Ey" firstAttribute="trailing" secondItem="dtS-YY-Eih" secondAttribute="trailing" constant="20" id="hpM-zU-TV3"/>
                             <constraint firstItem="qlu-P8-Bdg" firstAttribute="top" secondItem="MZR-MS-4Ey" secondAttribute="top" constant="20" id="i5R-0J-nw1"/>
@@ -93,7 +106,7 @@
                 <navigationController storyboardIdentifier="singInNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PeQ-D2-iqx" customClass="BaseNavigationViewController" customModule="FlyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oxV-ak-i96">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

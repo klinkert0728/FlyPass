@@ -13,20 +13,24 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var successLogin:(()->())?
+    var viewModel:LoginViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViewModel()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.moveKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.moveKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
 
-    
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object:nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide,object:nil)
     }
     
+    fileprivate func initViewModel() {
+        viewModel = LoginViewModel()
+    }
     override func configureAppearance() {
         emailField.delegate     = self
         passwordField.delegate  = self
@@ -37,20 +41,8 @@ class LoginViewController: BaseViewController {
             SVProgressHUD.showInfo(withStatus: "")
             return
         }
-        signIn(userId: documentIdText, userPassword: currentPassword)
+        viewModel?.signIn(userId:documentIdText, userPassword: currentPassword, successClosure: successLogin!)
     }
-    
-    fileprivate func signIn(userId:String,userPassword:String) {
-        SVProgressHUD.show()
-        User.authenticateUser(documentId: userId, password: userPassword, successCallback: {
-            SVProgressHUD.dismiss()
-            self.successLogin?()
-        }, errorCallback: { error in
-            SVProgressHUD.dismiss()
-            SVProgressHUD.showInfo(withStatus: error.localizedDescription)
-        })
-    }
-    
     
     @objc func moveKeyboard(notification:NSNotification) {
         let info = notification.userInfo!

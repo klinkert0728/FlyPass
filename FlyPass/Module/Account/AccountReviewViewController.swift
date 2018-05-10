@@ -23,7 +23,6 @@ class AccountReviewViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
-        //getUserInformation()
     }
     
     fileprivate func initViewModel() {
@@ -65,31 +64,10 @@ class AccountReviewViewController: BaseViewController {
             loginViewController?.successLogin = { [weak self] in
                 self?.navigationController?.dismiss(animated: true, completion: nil)
                 self?.viewModel?.fetchUserInformation()
+                self?.viewModel?.fetchUserMovements()
             }
         }
     }
-    
-//    fileprivate func getUserInformation() {
-//        if !User.isLoggedIn {
-//            return
-//        }
-//        SVProgressHUD.show()
-//        User.getUserInformation(successCallback: { (currentUser) in
-//            UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
-//                self.movements.removeAll()
-//                self.movements = userMovements
-//                self.movementTableview.reloadData()
-//            }, errorCallback: { (error) in
-//                SVProgressHUD.dismiss()
-//                SVProgressHUD.show(withStatus: error.localizedDescription)
-//            })
-//            self.configureResumeView()
-//            SVProgressHUD.dismiss()
-//        }, errorCallback: { error in
-//            SVProgressHUD.dismiss()
-//            SVProgressHUD.show(withStatus: error.localizedDescription)
-//        })
-//    }
     
     fileprivate func configureResumeView() {
         guard let user = viewModel?.user else {

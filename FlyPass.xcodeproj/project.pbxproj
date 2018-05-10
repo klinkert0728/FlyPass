@@ -32,6 +32,7 @@
 		96D1884320A4954100F0D3D8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */; };
 		96D1884520A4E13700F0D3D8 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */; };
 		96D1884720A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884620A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift */; };
+		96D1884920A5049F00F0D3D8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884820A5049F00F0D3D8 /* LoginViewModel.swift */; };
 		A0A67A9CC122176CD0FF0D7E /* Pods_FlyPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */; };
 		C8DDB9A21D3ABCBE206130EF /* Pods_FlyPassTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		96D1884620A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountReviewViewControllerViewModel.swift; sourceTree = "<group>"; };
+		96D1884820A5049F00F0D3D8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C46486592AF641FFA884A578 /* Pods-FlyPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.release.xcconfig"; sourceTree = "<group>"; };
 		F97F586DFE9CE37011DC4F30 /* Pods-FlyPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				96BDAFEB20A25ECD00D4A42E /* LoginViewController.swift */,
+				96D1884820A5049F00F0D3D8 /* LoginViewModel.swift */,
 			);
 			path = "Sign in";
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				96BDAFDB20A22F9800D4A42E /* Apearance.swift in Sources */,
 				96BDAFCD20A2202300D4A42E /* Endpoint.swift in Sources */,
 				96D1884520A4E13700F0D3D8 /* UIColorHelper.swift in Sources */,
+				96D1884920A5049F00F0D3D8 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
