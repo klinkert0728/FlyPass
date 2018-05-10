@@ -16,8 +16,8 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.moveKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.moveKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -52,20 +52,32 @@ class LoginViewController: BaseViewController {
     }
     
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+    @objc func moveKeyboard(notification:NSNotification) {
+        let info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        if notification.name == NSNotification.Name.UIKeyboardWillHide {
+            UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                
+                self.view.frame.origin.y = 64
+            })
+            
+        }else {
+            UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                guard let navigation = self.navigationController else {
+                    return
+                }
+                let min = navigation.navigationBar.frame.maxY
+                let value = keyboardFrame.height - (self.view.frame.height - self.emailField!.frame.maxY - 5)
+                self.view.frame.origin.y = -(self.clamp(value: value, minValue: -min, maxValue:keyboardFrame.height))
+                
+                // self.view.frame.origin.y = -(keyboardFrame.size.height * 0.4)
+            })
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+    func clamp<T : Comparable>(value: T, minValue: T, maxValue: T) -> T {
+        return min(maxValue, max(minValue, value))
     }
 }
 
