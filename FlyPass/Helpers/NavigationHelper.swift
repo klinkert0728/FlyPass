@@ -9,12 +9,18 @@
 import Foundation
 import  UIKit
 
+fileprivate enum storyboardsName {
+    static let signIn = "SingIn"
+}
+
+fileprivate enum controllersIndentifiers {
+    static let signInNavigationController = "singInNavigationController"
+}
 
 class NavigationHelper {
     //MARK: SignIn
     class func signInNavigationViewController() -> UINavigationController {
-        return UIStoryboard(name: "SingIn", bundle: nil).instantiateViewController(withIdentifier: "singInNavigationController") as! UINavigationController
-        
+        return UIStoryboard(name: storyboardsName.signIn, bundle: nil).instantiateViewController(withIdentifier: controllersIndentifiers.signInNavigationController) as! UINavigationController
     }
     
 }

@@ -9,15 +9,35 @@
 import UIKit
 import  SVProgressHUD
 
+enum tableViewConstants {
+    static let movementCell = "movementCell"
+}
+
 class AccountReviewViewController: BaseViewController {
 
     @IBOutlet weak var movementTableview: UITableView!
     @IBOutlet weak var resumeAccountView: ResumeAccountView!
-    fileprivate var movements = [UserMovements]()
+    
+    var viewModel:AccountReviewViewControllerViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserInformation()
+        initViewModel()
+        //getUserInformation()
+    }
+    
+    fileprivate func initViewModel() {
+        
+        viewModel = AccountReviewViewControllerViewModel()
+        viewModel?.fetchUserInformation()
+        viewModel?.fetchUserMovements()
+        viewModel?.reloadTableViewClosure = { [weak self] in
+            self?.movementTableview.reloadData()
+        }
+        
+        viewModel?.reloadUserInfoView = { [weak self] in
+            self?.configureResumeView()
+        }
     }
     
     override func configureAppearance() {
@@ -44,35 +64,35 @@ class AccountReviewViewController: BaseViewController {
             navigationController?.present(loginNavigation, animated: true, completion: nil)
             loginViewController?.successLogin = { [weak self] in
                 self?.navigationController?.dismiss(animated: true, completion: nil)
-                self?.getUserInformation()
+                self?.viewModel?.fetchUserInformation()
             }
         }
     }
     
-    fileprivate func getUserInformation() {
-        if !User.isLoggedIn {
-            return
-        }
-        SVProgressHUD.show()
-        User.getUserInformation(successCallback: { (currentUser) in
-            UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
-                self.movements.removeAll()
-                self.movements = userMovements
-                self.movementTableview.reloadData()
-            }, errorCallback: { (error) in
-                SVProgressHUD.dismiss()
-                SVProgressHUD.show(withStatus: error.localizedDescription)
-            })
-            self.configureResumeView()
-            SVProgressHUD.dismiss()
-        }, errorCallback: { error in
-            SVProgressHUD.dismiss()
-            SVProgressHUD.show(withStatus: error.localizedDescription)
-        })
-    }
+//    fileprivate func getUserInformation() {
+//        if !User.isLoggedIn {
+//            return
+//        }
+//        SVProgressHUD.show()
+//        User.getUserInformation(successCallback: { (currentUser) in
+//            UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
+//                self.movements.removeAll()
+//                self.movements = userMovements
+//                self.movementTableview.reloadData()
+//            }, errorCallback: { (error) in
+//                SVProgressHUD.dismiss()
+//                SVProgressHUD.show(withStatus: error.localizedDescription)
+//            })
+//            self.configureResumeView()
+//            SVProgressHUD.dismiss()
+//        }, errorCallback: { error in
+//            SVProgressHUD.dismiss()
+//            SVProgressHUD.show(withStatus: error.localizedDescription)
+//        })
+//    }
     
     fileprivate func configureResumeView() {
-        guard let user = User.currentUser else {
+        guard let user = viewModel?.user else {
             return
         }
         resumeAccountView.configureView(user: user)
@@ -85,13 +105,19 @@ extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movements.count
+        guard let viewModel = viewModel else {
+            return 0
+        }
+        return viewModel.movements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movementCell", for: indexPath) as! ResumeAccountTableViewCell
-        
-        cell.configureMovementCell(movement: movements[indexPath.row])
+        guard let viewModel = viewModel else {
+            return UITableViewCell()
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewConstants.movementCell, for: indexPath) as! ResumeAccountTableViewCell
+        let movement = viewModel.movements[indexPath.row]
+        cell.configureMovementCell(movement: movement)
         return cell
     }
     

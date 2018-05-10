@@ -21,7 +21,6 @@ class User: Object,Mappable {
     dynamic var limitAmountLow              = 0.0
     dynamic var minimumRechargeAmount       = 0.0
     dynamic var monthlyAverageConsumption   = 0.0
-    var userMovements                       = List<UserMovements>()
     
     class var currentUser:User? {
         var user:User? = nil

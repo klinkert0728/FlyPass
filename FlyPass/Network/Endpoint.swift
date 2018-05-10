@@ -10,35 +10,45 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+fileprivate struct requestConstants {
+    fileprivate enum constantUrls {
+        static let baseUrl = "https://secure.flypass.com.co/flypass/"
+    }
+    
+    fileprivate enum constantPaths {
+        static let login            =   "secure/oauth/token"
+        static let userInfo         =   "user-service/userinformation"
+        static let userMovements    =   "report/userMovements"
+    }
+}
+
+
+
 enum flypassEndpoint {
     case login(userDocument:String,password:String)
     case userInformation()
     case getUserMovements(page:Int)
-    
-    
 }
 
 
 extension flypassEndpoint:APIEndpoint {
     
-    
     var baseURL: URL {
         switch self {
         default:
-            return URL(string: "https://secure.flypass.com.co/flypass/")!
+            return URL(string: requestConstants.constantUrls.baseUrl)!
         }
     }
     
     var path: String {
         switch self {
         case .login(userDocument: _, password: _):
-            return "secure/oauth/token"
+            return requestConstants.constantPaths.login
         case .userInformation():
-            return "user-service/userinformation"
+            return requestConstants.constantPaths.userInfo
         case .getUserMovements(page: _):
-            return "report/userMovements"
+            return requestConstants.constantPaths.userMovements
         }
-        
     }
     
     var method: HTTPMethod {
@@ -74,7 +84,6 @@ extension flypassEndpoint:APIEndpoint {
         case .login(userDocument: _, password: _):
             return ["Authorization":"Basic Zmx5cGFzczpSbXg1ZEdWamFDNHlNREUz"]
         default:
-            //let token = KNMTCAppEngine.activeAppEngine()?.sessionManager.activeSession()?.token ?? ""
             let token = User.currentUser?.token ?? ""
             return ["Authorization": "Bearer \(token)"]
         }

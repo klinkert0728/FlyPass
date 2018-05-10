@@ -30,6 +30,8 @@
 		96BDAFF320A25F3F00D4A42E /* SingIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BDAFF220A25F3F00D4A42E /* SingIn.storyboard */; };
 		96BDAFF520A2603B00D4A42E /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */; };
 		96D1884320A4954100F0D3D8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */; };
+		96D1884520A4E13700F0D3D8 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */; };
+		96D1884720A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1884620A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift */; };
 		A0A67A9CC122176CD0FF0D7E /* Pods_FlyPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */; };
 		C8DDB9A21D3ABCBE206130EF /* Pods_FlyPassTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +78,8 @@
 		96BDAFF220A25F3F00D4A42E /* SingIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingIn.storyboard; sourceTree = "<group>"; };
 		96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		96D1884220A4954100F0D3D8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
+		96D1884620A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountReviewViewControllerViewModel.swift; sourceTree = "<group>"; };
 		C46486592AF641FFA884A578 /* Pods-FlyPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.release.xcconfig"; sourceTree = "<group>"; };
 		F97F586DFE9CE37011DC4F30 /* Pods-FlyPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +149,7 @@
 			children = (
 				96BDAFE120A2347500D4A42E /* Views */,
 				96BDAFD520A22F2F00D4A42E /* Helpers */,
-				96BDAFD120A22EC500D4A42E /* Controllers */,
+				96BDAFD120A22EC500D4A42E /* Module */,
 				96BDAFCE20A2296300D4A42E /* Models */,
 				96BDAFC720A21C8400D4A42E /* Network */,
 				96BDAFA720A2191C00D4A42E /* AppDelegate.swift */,
@@ -183,7 +187,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		96BDAFD120A22EC500D4A42E /* Controllers */ = {
+		96BDAFD120A22EC500D4A42E /* Module */ = {
 			isa = PBXGroup;
 			children = (
 				96D1884120A4951500F0D3D8 /* Settings */,
@@ -191,7 +195,7 @@
 				96BDAFDE20A2340800D4A42E /* Account */,
 				96BDAFD220A22EED00D4A42E /* BaseControllers */,
 			);
-			path = Controllers;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		96BDAFD220A22EED00D4A42E /* BaseControllers */ = {
@@ -212,6 +216,7 @@
 				96BDAFDA20A22F9800D4A42E /* Apearance.swift */,
 				96BDAFDC20A22FC800D4A42E /* FlypassExtensions.swift */,
 				96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */,
+				96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				96BDAFDF20A2342900D4A42E /* AccountReviewViewController.swift */,
+				96D1884620A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -516,9 +522,11 @@
 				96BDAFE920A242EB00D4A42E /* ResumeAccountTableViewCell.swift in Sources */,
 				96BDAFCB20A21D5300D4A42E /* APIEndpoint.swift in Sources */,
 				96BDAFF520A2603B00D4A42E /* NavigationHelper.swift in Sources */,
+				96D1884720A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift in Sources */,
 				96BDAFEE20A25EDD00D4A42E /* BaseViewController.swift in Sources */,
 				96BDAFDB20A22F9800D4A42E /* Apearance.swift in Sources */,
 				96BDAFCD20A2202300D4A42E /* Endpoint.swift in Sources */,
+				96D1884520A4E13700F0D3D8 /* UIColorHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

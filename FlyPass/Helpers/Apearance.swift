@@ -23,7 +23,7 @@ class Appearance: NSObject {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]
     }
     
-    class func colorNavigationBar(color:UIColor, navigationBar: UINavigationBar?){
+    class func colorNavigationBar(color:UIColor, navigationBar: UINavigationBar?) {
         navigationBar?.setBackgroundImage(UIImage.imageFromColor(color: color), for: UIBarMetrics.default)
         navigationBar?.isTranslucent        = false
         navigationBar?.barTintColor         = color
@@ -36,7 +36,7 @@ class Appearance: NSObject {
     }
     
     
-    class func barButtonWithImage(image: UIImage?, target: AnyObject?, action: Selector, color:Bool) -> UIBarButtonItem{
+    class func barButtonWithImage(image: UIImage?, target: Any?, action: Selector, color:Bool) -> UIBarButtonItem {
         
         let but: UIButton = UIButton(type: UIButtonType.custom) as UIButton
         but.frame = CGRect(x:0, y:0, width:70, height:30)
@@ -56,7 +56,7 @@ class Appearance: NSObject {
         
     }
     
-    class func barButtonWithImage(image: UIImage?, target: Any?, color:UIColor = UIColor.white, action: Selector) -> UIBarButtonItem{
+    class func barButtonWithImage(image: UIImage?, target: Any?, color:UIColor = UIColor.white, action: Selector) -> UIBarButtonItem {
         
         let but: UIButton = UIButton(type: UIButtonType.custom) as UIButton
         but.frame = CGRect(x:0, y:0, width:70, height:30)
@@ -86,7 +86,7 @@ class Appearance: NSObject {
         return barButton
     }
     
-    class func barButtonWithTitle(title: String?, textColor: UIColor, target: Any?, action: Selector) -> UIBarButtonItem{
+    class func barButtonWithTitle(title: String?, textColor: UIColor, target: Any?, action: Selector) -> UIBarButtonItem {
         
         let but: UIButton = UIButton(type: UIButtonType.custom) as UIButton
         but.frame = CGRect(x:0, y:0, width:50, height:30)
@@ -105,55 +105,4 @@ class Appearance: NSObject {
     
 }
 
-extension UIColor {
-    
-    
-    class var primaryColor:UIColor {
-        return UIColor(hex: "#bed94d")
-    }
-    
-    
-    class func colorFromString(titleColor:String) -> UIColor {
-        switch titleColor.lowercased() {
-        case "white":
-            return UIColor.white
-        case "clear":
-            return UIColor.clear
-        case "primary":
-            return UIColor.primaryColor
-        default:
-            return UIColor.white
-        }
-        
-    }
-    
-    func colorString() -> String{
-        switch self {
-        case UIColor.white:
-            return "white"
-        case UIColor.clear:
-            return "clear"
-        case UIColor.primaryColor:
-            return "primary"
-        default:
-            return "clear"
-        }
-    }
-    
-    
-    convenience init(hex: String, alpha: CGFloat = 1) {
-        assert(hex[hex.startIndex] == "#", "Expected hex string of format #RRGGBB")
-        
-        let scanner = Scanner(string: hex)
-        scanner.scanLocation = 1  // skip #
-        
-        var rgb: UInt32 = 0
-        scanner.scanHexInt32(&rgb)
-        
-        self.init(
-            red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
-            green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
-            blue:  CGFloat((rgb &     0xFF)      )/255.0,
-            alpha: alpha)
-    }
-}
+
