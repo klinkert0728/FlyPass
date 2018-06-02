@@ -21,6 +21,7 @@ class User: Object,Mappable {
     dynamic var limitAmountLow              = 0.0
     dynamic var minimumRechargeAmount       = 0.0
     dynamic var monthlyAverageConsumption   = 0.0
+    dynamic var personId                    = 0
     
     class var currentUser:User? {
         var user:User? = nil
@@ -57,6 +58,7 @@ class User: Object,Mappable {
         limitAmountLow              <- map["body.limitAmountLow"]
         minimumRechargeAmount       <- map["body.minimumRechargeAmount"]
         monthlyAverageConsumption   <- map["body.monthlyAverageConsumption"]
+        personId                     <- map["body.secureUser.person.id"]
     }
     
     
@@ -70,6 +72,9 @@ class User: Object,Mappable {
             })
             successCallback(user)
         }, errorClosure: {error in
+            if (error as NSError).code == 401 {
+                User.logOut()
+            }
             errorCallback(error)
         })
     }
@@ -122,7 +127,10 @@ class UserMovements:Object,Mappable {
         
         APIClient.sharedClient.requestArrayOfObject(endpoint: flypassEndpoint.getUserMovements(page: 1), keyPath: "body.content", completionHandler: { (movements:[UserMovements]) in
             successCallback(movements)
-        }, errorClosure: {error in
+        }, errorClosure: { error in
+            if (error as NSError).code == 401 {
+                User.logOut()
+            }
             errorCallback(error)
         })
     }

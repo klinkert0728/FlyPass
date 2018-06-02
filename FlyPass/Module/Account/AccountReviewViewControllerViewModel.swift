@@ -37,17 +37,13 @@ class AccountReviewViewControllerViewModel:AccountReviewViewModel {
         }, errorCallback: errorClosure)
     }
     
-    func fetchUserInformation() {
-        if !User.isLoggedIn {
-            return
-        }
-        SVProgressHUD.show()
+    func fetchUserInformation(successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error) ->()) {
+        if !User.isLoggedIn { return }
         User.getUserInformation(successCallback: { (currentUser) in
             self.user = currentUser
-            SVProgressHUD.dismiss()
+            successClosure()
         }, errorCallback: { error in
-            SVProgressHUD.dismiss()
-            SVProgressHUD.show(withStatus: error.localizedDescription)
+           errorClosure(error)
         })
     }
 }

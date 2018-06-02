@@ -7,9 +7,6 @@
 //
 
 import Foundation
-
-
-import Foundation
 import UIKit
 
 class Appearance: NSObject {

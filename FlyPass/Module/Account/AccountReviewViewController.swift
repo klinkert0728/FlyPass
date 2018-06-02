@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import  SVProgressHUD
+import SVProgressHUD
 
 enum tableViewConstants {
     static let movementCell = "movementCell"
@@ -18,31 +18,45 @@ class AccountReviewViewController: BaseViewController {
     @IBOutlet weak var movementTableview: UITableView!
     @IBOutlet weak var resumeAccountView: ResumeAccountView!
     
-    var viewModel:AccountReviewViewControllerViewModel?
+    var viewModel = AccountReviewViewControllerViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
     }
     
+    
+    //MARK: ViewModel
     fileprivate func initViewModel() {
-        
-        viewModel = AccountReviewViewControllerViewModel()
-        viewModel?.fetchUserInformation()
+        updateReviewView()
         upateMovements()
-        viewModel?.reloadUserInfoView = { [weak self] in
+    }
+    
+    fileprivate func updateReviewView() {
+        SVProgressHUD.show()
+        viewModel.fetchUserInformation(successClosure: { [weak self] in
+            SVProgressHUD.dismiss()
             self?.configureResumeView()
-        }
+            }, errorClosure: { error in
+                SVProgressHUD.dismiss()
+                SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+                if (error as NSError).code == 401  {
+                    self.presentLogin()
+                }
+        })
     }
     
     fileprivate func upateMovements() {
         SVProgressHUD.show()
-        viewModel?.fetchUserMovements(successClosure: { [weak self] in
+        viewModel.fetchUserMovements(successClosure: { [weak self] in
             SVProgressHUD.dismiss()
             self?.movementTableview.reloadData()
             }, errorClosure: { (error) in
                 SVProgressHUD.dismiss()
-                SVProgressHUD.show(withStatus: error.localizedDescription)
+                SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+                if (error as NSError).code == 401  {
+                    self.presentLogin()
+                }
         })
     }
     
@@ -54,6 +68,7 @@ class AccountReviewViewController: BaseViewController {
         movementTableview.estimatedRowHeight            = 100
         movementTableview.rowHeight                     = UITableViewAutomaticDimension
         movementTableview.tableFooterView               = UIView()
+        navigationItem.rightBarButtonItem = Appearance.barButtonWithTitle(title: "Recharge Account", target: self, action: #selector(rechargeAccountAction(_:)))
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,25 +78,33 @@ class AccountReviewViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        presentLogin()
+    }
+    
+    fileprivate func presentLogin() {
         if !User.isLoggedIn {
             let loginNavigation = NavigationHelper.signInNavigationViewController()
             let loginViewController = loginNavigation.topViewController as?  LoginViewController
             navigationController?.present(loginNavigation, animated: true, completion: nil)
             loginViewController?.successLogin = { [weak self] in
                 self?.navigationController?.dismiss(animated: true, completion: nil)
-                self?.viewModel?.fetchUserInformation()
+                self?.updateReviewView()
                 self?.upateMovements()
             }
         }
     }
     
     fileprivate func configureResumeView() {
-        guard let user = viewModel?.user else {
+        guard let user = viewModel.user else {
             return
         }
         resumeAccountView.configureView(user: user)
     }
+    
+    @objc func rechargeAccountAction(_ sender: Any) {
+        
+    }
+    
 }
 
 extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource {
@@ -90,20 +113,19 @@ extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let viewModel = viewModel else {
-            return 0
-        }
         return viewModel.movements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel = viewModel else {
-            return UITableViewCell()
-        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewConstants.movementCell, for: indexPath) as! ResumeAccountTableViewCell
         let movement = viewModel.movements[indexPath.row]
         cell.configureMovementCell(movement: movement)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -38,6 +38,23 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftDate
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - Crashlytics
+    - Fabric
+    - ObjectMapper
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxRealm
+    - RxSwift
+    - SBPickerSelector
+    - SVProgressHUD
+    - SwiftDate
+
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
@@ -56,4 +73,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3c144f660e52a991dbc7475f76fdb1a5a56563fb
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
