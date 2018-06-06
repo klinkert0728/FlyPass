@@ -19,6 +19,7 @@ fileprivate struct requestConstants {
         static let login            =   "secure/oauth/token"
         static let userInfo         =   "user-service/userinformation"
         static let userMovements    =   "report/userMovements"
+        static let accountOptions   =   "bancolombia-integration/paymentMethod/erolleds"
     }
 }
 
@@ -28,6 +29,7 @@ enum flypassEndpoint {
     case login(userDocument:String,password:String)
     case userInformation()
     case getUserMovements(page:Int)
+    case accountOptions()
 }
 
 
@@ -48,6 +50,8 @@ extension flypassEndpoint:APIEndpoint {
             return requestConstants.constantPaths.userInfo
         case .getUserMovements(page: _):
             return requestConstants.constantPaths.userMovements
+        case .accountOptions()
+            return requestConstants.constantPaths.accountOptions
         }
     }
     
