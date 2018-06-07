@@ -1,0 +1,6 @@
+framework module Pods_FlyPass {
+  umbrella header "Pods-FlyPass-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -22,14 +22,14 @@ class SecureUser:Object,Mappable {
     }
     
     override static func primaryKey() -> String? {
-        return "documentId"
+        return "login"
     }
     
     func mapping(map: Map) {
         
         login           <- map["login"]
         secureUserId    <- map["id"]
-        person          <- map["Person"]
+        person          <- map["person"]
     }
     
 }

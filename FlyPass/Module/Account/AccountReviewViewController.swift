@@ -68,7 +68,6 @@ class AccountReviewViewController: BaseViewController {
         movementTableview.estimatedRowHeight            = 100
         movementTableview.rowHeight                     = UITableViewAutomaticDimension
         movementTableview.tableFooterView               = UIView()
-        navigationItem.rightBarButtonItem = Appearance.barButtonWithTitle(title: "Recharge Account", target: self, action: #selector(rechargeAccountAction(_:)))
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,11 +99,6 @@ class AccountReviewViewController: BaseViewController {
         }
         resumeAccountView.configureView(user: user)
     }
-    
-    @objc func rechargeAccountAction(_ sender: Any) {
-        
-    }
-    
 }
 
 extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource {

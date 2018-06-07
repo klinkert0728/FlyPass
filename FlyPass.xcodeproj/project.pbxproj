@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		968E1F4420B463C800DAE9CB /* RechargeAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968E1F4320B463C800DAE9CB /* RechargeAccount.storyboard */; };
+		6FA1C7C920C836570042AD98 /* RechargeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7C820C836570042AD98 /* RechargeAccount.swift */; };
+		6FA1C7CD20C83C300042AD98 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7CC20C83C300042AD98 /* Person.swift */; };
+		6FA1C7CF20C83C600042AD98 /* SecureUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7CE20C83C600042AD98 /* SecureUser.swift */; };
 		968E1F4720B46F2A00DAE9CB /* RechargeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E1F4620B46F2A00DAE9CB /* RechargeAccountViewController.swift */; };
 		968E1F4920B46F4200DAE9CB /* RechargeAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E1F4820B46F4200DAE9CB /* RechargeAccountViewModel.swift */; };
 		96BDAFA820A2191C00D4A42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAFA720A2191C00D4A42E /* AppDelegate.swift */; };
@@ -54,8 +56,10 @@
 		2AF3ECFED3D79D6BD5B8D6B7 /* Pods-FlyPassTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.release.xcconfig"; sourceTree = "<group>"; };
+		6FA1C7C820C836570042AD98 /* RechargeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccount.swift; sourceTree = "<group>"; };
+		6FA1C7CC20C83C300042AD98 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6FA1C7CE20C83C600042AD98 /* SecureUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUser.swift; sourceTree = "<group>"; };
 		79AAC4BF5865529E89FC2A8B /* Pods_FlyPass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		968E1F4320B463C800DAE9CB /* RechargeAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RechargeAccount.storyboard; sourceTree = "<group>"; };
 		968E1F4620B46F2A00DAE9CB /* RechargeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccountViewController.swift; sourceTree = "<group>"; };
 		968E1F4820B46F4200DAE9CB /* RechargeAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccountViewModel.swift; sourceTree = "<group>"; };
 		96BDAFA420A2191C00D4A42E /* FlyPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlyPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				96BDAFCF20A2297900D4A42E /* User.swift */,
+				6FA1C7C820C836570042AD98 /* RechargeAccount.swift */,
+				6FA1C7CC20C83C300042AD98 /* Person.swift */,
+				6FA1C7CE20C83C600042AD98 /* SecureUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,7 +287,6 @@
 			children = (
 				96BDAFAB20A2191C00D4A42E /* Main.storyboard */,
 				96BDAFF220A25F3F00D4A42E /* SingIn.storyboard */,
-				968E1F4320B463C800DAE9CB /* RechargeAccount.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -380,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				96BDAFF320A25F3F00D4A42E /* SingIn.storyboard in Resources */,
-				968E1F4420B463C800DAE9CB /* RechargeAccount.storyboard in Resources */,
 				96BDAFB220A2191C00D4A42E /* LaunchScreen.storyboard in Resources */,
 				96BDAFAF20A2191C00D4A42E /* Assets.xcassets in Resources */,
 				96BDAFAD20A2191C00D4A42E /* Main.storyboard in Resources */,
@@ -480,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA1C7CD20C83C300042AD98 /* Person.swift in Sources */,
 				96BDAFE620A23D9200D4A42E /* BaseNavigationViewController.swift in Sources */,
 				96BDAFD420A22EFF00D4A42E /* BaseTableViewController.swift in Sources */,
 				96BDAFA820A2191C00D4A42E /* AppDelegate.swift in Sources */,
@@ -496,12 +502,14 @@
 				96BDAFDD20A22FC800D4A42E /* FlypassExtensions.swift in Sources */,
 				96BDAFE920A242EB00D4A42E /* ResumeAccountTableViewCell.swift in Sources */,
 				96BDAFCB20A21D5300D4A42E /* APIEndpoint.swift in Sources */,
+				6FA1C7CF20C83C600042AD98 /* SecureUser.swift in Sources */,
 				96BDAFF520A2603B00D4A42E /* NavigationHelper.swift in Sources */,
 				96D1884720A4EAB900F0D3D8 /* AccountReviewViewControllerViewModel.swift in Sources */,
 				96BDAFEE20A25EDD00D4A42E /* BaseViewController.swift in Sources */,
 				96BDAFDB20A22F9800D4A42E /* Apearance.swift in Sources */,
 				96BDAFCD20A2202300D4A42E /* Endpoint.swift in Sources */,
 				96D1884520A4E13700F0D3D8 /* UIColorHelper.swift in Sources */,
+				6FA1C7C920C836570042AD98 /* RechargeAccount.swift in Sources */,
 				96D1884920A5049F00F0D3D8 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

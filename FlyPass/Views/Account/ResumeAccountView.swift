@@ -25,8 +25,11 @@ class ResumeAccountView: UIView {
     */
     
     func configureView(user:User) {
-        fullname.text           = user.fullname
-        docuemntId.text         = user.documentType + " " + user.documentId
+        guard let person = user.person else {
+            return
+        }
+        fullname.text           = person.fullname
+        docuemntId.text         = person.documentId
         averageConsum.text      = "Average: " + "\(user.monthlyAverageConsumption.formatCurrency())"
         amountAvailable.text    = "Available: " + "\(user.availableAmount.formatCurrency())"
         configureIndicatorBasedOnLowAmount(lowIndicator: user.limitAmountLow,amoutAvailable: user.availableAmount)

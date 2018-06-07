@@ -13,10 +13,8 @@ import ObjectMapper
 @objcMembers
 class User: Object,Mappable {
     
-    dynamic var fullname                    = ""
-    dynamic var token                       = ""
-    dynamic var documentType                = ""
     dynamic var documentId                  = ""
+    dynamic var token                       = ""
     dynamic var availableAmount             = 0.0
     dynamic var limitAmountLow              = 0.0
     dynamic var minimumRechargeAmount       = 0.0
@@ -53,15 +51,12 @@ class User: Object,Mappable {
     
     func mapping(map: Map) {
         
-        fullname                    <- map["body.secureUser.person.fullName"]
-        documentType                <- map["body.secureUser.person.documentType"]
-        documentId                  <- map["body.secureUser.person.document"]
         availableAmount             <- map["body.availableAmount"]
         limitAmountLow              <- map["body.limitAmountLow"]
         minimumRechargeAmount       <- map["body.minimumRechargeAmount"]
         monthlyAverageConsumption   <- map["body.monthlyAverageConsumption"]
-        personId                    <- map["body.secureUser.person.id"]
-        person                      <- map["person"]
+        documentId                  <- map["body.secureUser.person.documentId"]
+        person                      <- map["body.secureUser.person"]
     }
     
     
@@ -89,9 +84,9 @@ class User: Object,Mappable {
                 return
             }
             Realm.update(updateClosure: { (realm) in
-                let user = User()
-                user.documentId = documentId
-                user.token      = (jsonDict["access_token"] as? String) ?? ""
+                let user            = User()
+                user.documentId     = documentId
+                user.token          = (jsonDict["access_token"] as? String) ?? ""
                 realm.add(user)
             })
             successCallback()
@@ -121,7 +116,7 @@ class UserMovements:Object,Mappable {
     func mapping(map: Map) {
         amount              <- map["amount"]
         lisencePlate        <- map["licensePlate"]
-        date                <- (map["date"],dateTransform())
+        date                <- (map["date"],FlypassDateTransform())
         movementDescription <- map["description"]
         movementId          <- map["movemnentId"]
     }

@@ -50,7 +50,7 @@ extension flypassEndpoint:APIEndpoint {
             return requestConstants.constantPaths.userInfo
         case .getUserMovements(page: _):
             return requestConstants.constantPaths.userMovements
-        case .accountOptions()
+        case .accountOptions():
             return requestConstants.constantPaths.accountOptions
         }
     }

@@ -39,6 +39,8 @@ class RechargeAccount: Object,Mappable {
         accountUuid                 <- map["id"]
         productUuid                 <- map["idProductFlypass"]
         productType                 <- map["productType"]
+        suffixAccount               <- map["suffixAccount"]
+        accountUuid                 <- map["id"]
         registationDate             <- (map["registationDate"],FlypassDateTransform())
         signature                   <- map["signature"]
         userId                      <- map["user.id"]
@@ -47,8 +49,8 @@ class RechargeAccount: Object,Mappable {
     
     
     class func getRechargeOptions(endPoint:flypassEndpoint,successClosure:@escaping (_ rechargeDetails:[RechargeAccount])->(), errorClosure:@escaping (_ error:Error)->()) {
-        APIClient.sharedClient.requestArrayOfObject(endpoint: endPoint, completionHandler: { (rechargeDetails:[RechargeAccount]) in
-            
+        APIClient.sharedClient.requestArrayOfObject(endpoint: endPoint, keyPath: "body", completionHandler: { (rechargeDetails:[RechargeAccount]) in
+            successClosure(rechargeDetails)
         }, errorClosure: errorClosure)
         
     }

@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class RechargeAccountViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     private var indexOfCellBeforeDragging = 0
+    var viewModel = RechargeAccountViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate         = self
         collectionView.dataSource       = self
         collectionView.isPagingEnabled  = true
-        
-        // Do any additional setup after loading the view.
+        requestAccountInfo()
     }
     
     override func configureAppearance() {
@@ -59,6 +60,14 @@ class RechargeAccountViewController: BaseViewController {
         let itemWidth = collectionViewLayout.itemSize.width
         let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
         return Int(round(proportionalOffset))
+    }
+    
+    fileprivate func requestAccountInfo() {
+        viewModel.getAccountRechargeDetails(successClosure: {
+            self.collectionView.reloadData()
+        }, errorClosure: {error in
+            SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+        })
     }
 }
 
