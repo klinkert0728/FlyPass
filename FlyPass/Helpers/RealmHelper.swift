@@ -51,7 +51,7 @@ open class ArrayTransform<T:RealmSwift.Object> : TransformType where T:Mappable 
 }
 
 
-open class dateTransform: TransformType {
+open class FlypassDateTransform: TransformType {
     
     public typealias Object = Date
     public typealias JSON = String

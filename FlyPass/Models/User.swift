@@ -22,6 +22,8 @@ class User: Object,Mappable {
     dynamic var minimumRechargeAmount       = 0.0
     dynamic var monthlyAverageConsumption   = 0.0
     dynamic var personId                    = 0
+    dynamic var id                          = 0
+    dynamic var person:Person?
     
     class var currentUser:User? {
         var user:User? = nil
@@ -58,7 +60,8 @@ class User: Object,Mappable {
         limitAmountLow              <- map["body.limitAmountLow"]
         minimumRechargeAmount       <- map["body.minimumRechargeAmount"]
         monthlyAverageConsumption   <- map["body.monthlyAverageConsumption"]
-        personId                     <- map["body.secureUser.person.id"]
+        personId                    <- map["body.secureUser.person.id"]
+        person                      <- map["person"]
     }
     
     

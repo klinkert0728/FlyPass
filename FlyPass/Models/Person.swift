@@ -7,7 +7,31 @@
 //
 
 import UIKit
+import ObjectMapper
+import RealmSwift
 
-class Person: NSObject {
-
+@objcMembers
+class Person:Object,Mappable {
+    
+    dynamic var fullname        = ""
+    dynamic var id              = 0
+    dynamic var documentId      = ""
+    dynamic var documentType    = 0
+    
+    convenience required init?(map: Map) {
+        self.init()
+    }
+    
+    override static func primaryKey() -> String? {
+        return "documentId"
+    }
+    
+    func mapping(map: Map) {
+        
+        fullname                    <- map["fullName"]
+        documentType                <- map["documentType"]
+        documentId                  <- map["document"]
+        id                          <- map["id"]
+    }
+    
 }

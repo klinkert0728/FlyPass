@@ -7,7 +7,29 @@
 //
 
 import UIKit
+import RealmSwift
+import ObjectMapper
 
-class SecureUser: NSObject {
-
+@objcMembers
+class SecureUser:Object,Mappable {
+    
+    dynamic var login           = ""
+    dynamic var secureUserId    = 0
+    dynamic var person:Person?
+    
+    convenience required init?(map: Map) {
+        self.init()
+    }
+    
+    override static func primaryKey() -> String? {
+        return "documentId"
+    }
+    
+    func mapping(map: Map) {
+        
+        login           <- map["login"]
+        secureUserId    <- map["id"]
+        person          <- map["Person"]
+    }
+    
 }
