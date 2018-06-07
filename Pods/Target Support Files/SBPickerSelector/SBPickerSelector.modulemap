@@ -1,6 +1,0 @@
-framework module SBPickerSelector {
-  umbrella header "SBPickerSelector-umbrella.h"
-
-  export *
-  module * { export * }
-}
