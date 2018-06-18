@@ -112,9 +112,13 @@ extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewConstants.movementCell, for: indexPath) as! ResumeAccountTableViewCell
-        let movement = viewModel.movements[indexPath.row]
+        let cell        = tableView.dequeueReusableCell(withIdentifier: tableViewConstants.movementCell, for: indexPath) as! ResumeAccountTableViewCell
+        let movement    = viewModel.movements[indexPath.row]
         cell.configureMovementCell(movement: movement)
+        if viewModel.shouldDownload && indexPath.row == viewModel.movements.count - 1 {
+            viewModel.movementPage += 1
+            upateMovements()
+        }
         return cell
     }
     

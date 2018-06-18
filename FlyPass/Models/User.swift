@@ -121,9 +121,9 @@ class UserMovements:Object,Mappable {
         movementId          <- map["movemnentId"]
     }
     
-    class func getUserMovements(successCallback:@escaping (_ user:[UserMovements])->(),errorCallback:@escaping (_ error:Error)->()) {
+    class func getUserMovements(page:Int,successCallback:@escaping (_ user:[UserMovements])->(),errorCallback:@escaping (_ error:Error)->()) {
         
-        APIClient.sharedClient.requestArrayOfObject(endpoint: flypassEndpoint.getUserMovements(page: 1), keyPath: "body.content", completionHandler: { (movements:[UserMovements]) in
+        APIClient.sharedClient.requestArrayOfObject(endpoint: flypassEndpoint.getUserMovements(page: page), keyPath: "body.content", completionHandler: { (movements:[UserMovements]) in
             successCallback(movements)
         }, errorClosure: { error in
             if (error as NSError).code == 401 {

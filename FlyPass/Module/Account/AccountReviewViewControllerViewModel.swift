@@ -26,13 +26,18 @@ class AccountReviewViewControllerViewModel:AccountReviewViewModel {
         }
     }
     
+    var shouldDownload      = true
+    var movementPage        = 1
+    
     func fetchUserMovements(successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error)->()) {
         if !User.isLoggedIn {
             successClosure()
             return
         }
-        UserMovements.getUserMovements(successCallback: { (userMovements:[UserMovements]) in
-            self.movements = userMovements
+        shouldDownload = false
+        UserMovements.getUserMovements(page:movementPage, successCallback: { (userMovements:[UserMovements]) in
+            self.movements.append(contentsOf: userMovements)
+            self.shouldDownload      = userMovements.count != 0
             successClosure()
         }, errorCallback: errorClosure)
     }
