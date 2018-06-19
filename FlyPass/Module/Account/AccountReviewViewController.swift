@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Crashlytics
 
 enum tableViewConstants {
     static let movementCell = "movementCell"
@@ -25,7 +26,6 @@ class AccountReviewViewController: BaseViewController {
         initViewModel()
     }
     
-    
     //MARK: ViewModel
     fileprivate func initViewModel() {
         updateReviewView()
@@ -37,11 +37,11 @@ class AccountReviewViewController: BaseViewController {
         viewModel.fetchUserInformation(successClosure: { [weak self] in
             SVProgressHUD.dismiss()
             self?.configureResumeView()
-            }, errorClosure: { error in
+            }, errorClosure: { [weak self] error in
                 SVProgressHUD.dismiss()
                 SVProgressHUD.showInfo(withStatus: error.localizedDescription)
                 if (error as NSError).code == 401  {
-                    self.presentLogin()
+                    self?.presentLogin()
                 }
         })
     }
@@ -51,11 +51,11 @@ class AccountReviewViewController: BaseViewController {
         viewModel.fetchUserMovements(successClosure: { [weak self] in
             SVProgressHUD.dismiss()
             self?.movementTableview.reloadData()
-            }, errorClosure: { (error) in
+            }, errorClosure: { [weak self] error in
                 SVProgressHUD.dismiss()
                 SVProgressHUD.showInfo(withStatus: error.localizedDescription)
                 if (error as NSError).code == 401  {
-                    self.presentLogin()
+                    self?.presentLogin()
                 }
         })
     }
