@@ -8,7 +8,7 @@ This allows me to check my flypass status
 * Run pod install
 
 ### Upcomming features
-* Refresh Content
+* Recharge account in the App
 * Improve design
 * Support Spanish and English
 
