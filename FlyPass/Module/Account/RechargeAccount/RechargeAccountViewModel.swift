@@ -9,7 +9,7 @@
 import UIKit
 
 class RechargeAccountViewModel  {
-    fileprivate var accountDetails:[RechargeAccount] = []
+    var accountDetails:[RechargeAccount] = []
     
     func getAccountRechargeDetails(successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error) ->()) {
         RechargeAccount.getRechargeOptions(endPoint: flypassEndpoint.accountOptions(), successClosure: { (options:[RechargeAccount]) in

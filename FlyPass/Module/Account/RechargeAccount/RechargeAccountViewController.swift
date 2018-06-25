@@ -63,9 +63,11 @@ class RechargeAccountViewController: BaseViewController {
     }
     
     fileprivate func requestAccountInfo() {
+        SVProgressHUD.show()
         viewModel.getAccountRechargeDetails(successClosure: {
+            SVProgressHUD.dismiss()
             self.collectionView.reloadData()
-        }, errorClosure: {error in
+        }, errorClosure: { error in
             SVProgressHUD.showInfo(withStatus: error.localizedDescription)
         })
     }
@@ -85,7 +87,7 @@ extension RechargeAccountViewController:UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 2
     }
     
     
