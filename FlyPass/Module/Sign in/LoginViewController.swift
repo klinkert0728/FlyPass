@@ -13,11 +13,10 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var successLogin:(()->())?
-    var viewModel:LoginViewModel?
+    let viewModel:LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViewModel()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.moveKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.moveKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
@@ -26,10 +25,6 @@ class LoginViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object:nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide,object:nil)
-    }
-    
-    fileprivate func initViewModel() {
-        viewModel = LoginViewModel()
     }
     
     override func configureAppearance() {
@@ -42,7 +37,7 @@ class LoginViewController: BaseViewController {
             SVProgressHUD.showInfo(withStatus: "")
             return
         }
-        viewModel?.signIn(userId:documentIdText, userPassword: currentPassword, successClosure: successLogin)
+        viewModel.signIn(userId:documentIdText, userPassword: currentPassword, successClosure: successLogin)
     }
     
     @objc func moveKeyboard(notification:NSNotification) {

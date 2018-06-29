@@ -15,7 +15,7 @@ class RechargeAccount: Object,Mappable {
 
     dynamic var accountNumber               = 0
     dynamic var customName                  = ""
-    dynamic var accountUuid                 = ""
+    dynamic var accountUuid                 = 0
     dynamic var productUuid                 = ""
     dynamic var registationDate             = Date()
     dynamic var userId                      = 0
@@ -36,12 +36,11 @@ class RechargeAccount: Object,Mappable {
         
         accountNumber               <- map["accountNumber"]
         customName                  <- map["customName"]
-        accountUuid                 <- map["id"]
         productUuid                 <- map["idProductFlypass"]
         productType                 <- map["productType"]
         suffixAccount               <- map["suffixAccount"]
         accountUuid                 <- map["id"]
-        registationDate             <- (map["registationDate"],FlypassDateTransform())
+        registationDate             <- (map["registrationDate"],FlypassDateTransform())
         signature                   <- map["signature"]
         userId                      <- map["user.id"]
         secureUser                  <- map["user.secureUser"]
@@ -53,6 +52,12 @@ class RechargeAccount: Object,Mappable {
             successClosure(rechargeDetails)
         }, errorClosure: errorClosure)
         
+    }
+    
+    static func rechargeAccount(endPoint:flypassEndpoint,successClosure:@escaping (_ rechargeDetails:[RechargeAccount])->(), errorClosure:@escaping (_ error:Error)->()) {
+        APIClient.sharedClient.requestJSONObject(endpoint: endPoint, completionHandler: { (responseData) in
+            print(responseData)
+        }, errorClosure: errorClosure)
     }
 }
 

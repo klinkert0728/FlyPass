@@ -20,4 +20,11 @@ class RechargeAccountViewModel  {
             errorClosure(error)
         })
     }
+    
+    func rechargeAccount(amountToRecharege amount:Int,selectedAccount account:RechargeAccount,successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error) ->()) {
+        RechargeAccount.rechargeAccount(endPoint: .rechargeAccount(rechargeAmount: amount, rechargeAccount: account), successClosure: { (rechargedAccount:[RechargeAccount]) in
+            print(rechargedAccount)
+        }, errorClosure: errorClosure)
+        
+    }
 }

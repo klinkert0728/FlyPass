@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F8C470820E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */; };
 		6FA1C7C920C836570042AD98 /* RechargeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7C820C836570042AD98 /* RechargeAccount.swift */; };
 		6FA1C7CD20C83C300042AD98 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7CC20C83C300042AD98 /* Person.swift */; };
 		6FA1C7CF20C83C600042AD98 /* SecureUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7CE20C83C600042AD98 /* SecureUser.swift */; };
@@ -56,6 +57,7 @@
 		2AF3ECFED3D79D6BD5B8D6B7 /* Pods-FlyPassTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.release.xcconfig"; sourceTree = "<group>"; };
+		6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FA1C7C820C836570042AD98 /* RechargeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccount.swift; sourceTree = "<group>"; };
 		6FA1C7CC20C83C300042AD98 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		6FA1C7CE20C83C600042AD98 /* SecureUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUser.swift; sourceTree = "<group>"; };
@@ -136,9 +138,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6F8C470620E6819800F7A8FD /* RechargeAccountCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */,
+			);
+			path = RechargeAccountCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		968E1F4520B46F0700DAE9CB /* RechargeAccount */ = {
 			isa = PBXGroup;
 			children = (
+				6F8C470620E6819800F7A8FD /* RechargeAccountCollectionViewCell */,
 				968E1F4620B46F2A00DAE9CB /* RechargeAccountViewController.swift */,
 				968E1F4820B46F4200DAE9CB /* RechargeAccountViewModel.swift */,
 			);
@@ -504,6 +515,7 @@
 				96BDAFD420A22EFF00D4A42E /* BaseTableViewController.swift in Sources */,
 				96BDAFA820A2191C00D4A42E /* AppDelegate.swift in Sources */,
 				96BDAFEC20A25ECD00D4A42E /* LoginViewController.swift in Sources */,
+				6F8C470820E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift in Sources */,
 				96BDAFD720A22F5200D4A42E /* RealmMigration.swift in Sources */,
 				96BDAFE020A2342900D4A42E /* AccountReviewViewController.swift in Sources */,
 				96BDAFD020A2297900D4A42E /* User.swift in Sources */,

@@ -9,5 +9,13 @@
 import UIKit
 
 class RechargeAccountCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var accountNumber: UILabel!
+    @IBOutlet weak var accountOwner: UILabel!
+    
+    
+    func setupInfoForAccount(account:RechargeAccount) {
+        accountOwner.text   = account.secureUser?.person?.fullname
+        accountNumber.text  = accountNumber.text! + " \(account.accountNumber)"
+    }
     
 }

@@ -321,7 +321,7 @@
                                     <inset key="sectionInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="5xX-jv-3pT">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="5xX-jv-3pT" customClass="RechargeAccountCollectionViewCell" customModule="FlyPass" customModuleProvider="target">
                                         <rect key="frame" x="30" y="5" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -331,7 +331,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="WYZ-DS-PW3">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxx xxxx xxxx xxxx" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khH-ul-3tj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX XXXX XXXX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khH-ul-3tj">
                                                     <rect key="frame" x="20" y="89" width="280" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="yKR-oi-Fk9"/>
@@ -379,6 +379,10 @@
                                             <constraint firstAttribute="bottom" secondItem="1V7-7k-aja" secondAttribute="bottom" constant="13" id="vHG-WW-cpJ"/>
                                             <constraint firstAttribute="trailing" secondItem="khH-ul-3tj" secondAttribute="trailing" constant="20" id="yJ2-kQ-ywF"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="accountNumber" destination="khH-ul-3tj" id="HHu-yg-tG4"/>
+                                            <outlet property="accountOwner" destination="1V7-7k-aja" id="h92-Yb-oPi"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -420,6 +424,9 @@
                                     <constraint firstAttribute="height" constant="40" id="7sM-2U-rbh"/>
                                 </constraints>
                                 <state key="normal" title="Recharge"/>
+                                <connections>
+                                    <action selector="RechargeAction:" destination="o7U-gp-Bye" eventType="touchUpInside" id="CJ6-6G-I7W"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -439,6 +446,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4yT-8q-lJl"/>
                     <connections>
+                        <outlet property="amountToRecharge" destination="2xH-0b-plK" id="JhT-Re-ZNg"/>
                         <outlet property="collectionView" destination="djy-qZ-xJl" id="teh-Bh-VhY"/>
                         <outlet property="collectionViewLayout" destination="bhx-0F-jSz" id="dms-Pj-czE"/>
                     </connections>
