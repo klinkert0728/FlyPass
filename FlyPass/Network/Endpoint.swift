@@ -20,6 +20,7 @@ fileprivate struct requestConstants {
         static let userInfo         =   "user-service/userinformation"
         static let userMovements    =   "report/userMovements"
         static let accountOptions   =   "bancolombia-integration/paymentMethod/erolleds"
+        static let rechargeAccount  =   "bancolombia-integration/processUrlDebitAccount/makeDebitAccount"
     }
 }
 
@@ -30,6 +31,7 @@ enum flypassEndpoint {
     case userInformation()
     case getUserMovements(page:Int)
     case accountOptions()
+    case rechargeAccount(rechargeAmount:Int,rechargeAccount:RechargeAccount)
 }
 
 
@@ -52,12 +54,14 @@ extension flypassEndpoint:APIEndpoint {
             return requestConstants.constantPaths.userMovements
         case .accountOptions():
             return requestConstants.constantPaths.accountOptions
+        case .rechargeAccount(rechargeAmount: _,rechargeAccount:_):
+            return requestConstants.constantPaths.rechargeAccount
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .login(userDocument: _, password: _):
+        case .login(userDocument: _, password: _),.rechargeAccount(rechargeAmount:_,rechargeAccount:_):
             return .post
         default:
             return .get
@@ -70,6 +74,20 @@ extension flypassEndpoint:APIEndpoint {
             return ["client_id":"flypass","grant_type":"password","username":userDocument,"password":password]
         case .getUserMovements(page: let page):
             return ["page":page]
+        case .rechargeAccount(rechargeAmount:let amount,rechargeAccount:let accountInfo):
+            var accountDic                      = Mapper().toJSON(accountInfo)
+            guard let secureUser = accountDic["user"], var signature = accountDic["signature"] as? [String:Any] else {
+                return nil
+            }
+            
+            signature["user"]                   = secureUser
+            accountDic["signature"]             = signature
+            accountDic["attemptOTP"]            = "0"
+            accountDic["enrolled"]              = true
+            accountDic["registrationDate"]      = accountInfo.registationDate.timeIntervalSince1970
+            accountDic["id"]                    = accountInfo.accountUuid
+            return ["paymentMethod":accountDic,"transactionValue":amount]
+            
         default:
             return nil
         }
@@ -77,6 +95,8 @@ extension flypassEndpoint:APIEndpoint {
     
     var customParameterEncoding: ParameterEncoding {
         switch self {
+        case .rechargeAccount(rechargeAmount: _, rechargeAccount: _):
+            return JSONEncoding.default
         default:
             return URLEncoding.default
         }
@@ -89,7 +109,7 @@ extension flypassEndpoint:APIEndpoint {
             return ["Authorization":"Basic Zmx5cGFzczpSbXg1ZEdWamFDNHlNREUz"]
         default:
             let token = User.currentUser?.token ?? ""
-            return ["Authorization": "Bearer \(token)"]
+            return ["Authorization": "Bearer \(token)","Content-Type":"application/json"]
         }
     }
 }
