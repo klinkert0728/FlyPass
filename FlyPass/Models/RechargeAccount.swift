@@ -54,9 +54,13 @@ class RechargeAccount: Object,Mappable {
         
     }
     
-    static func rechargeAccount(endPoint:flypassEndpoint,successClosure:@escaping (_ rechargeDetails:[RechargeAccount])->(), errorClosure:@escaping (_ error:Error)->()) {
+    static func rechargeAccount(endPoint:flypassEndpoint,successClosure:@escaping ()->(), errorClosure:@escaping (_ error:Error)->()) {
         APIClient.sharedClient.requestJSONObject(endpoint: endPoint, completionHandler: { (responseData) in
-            print(responseData)
+            if let responseDict = responseData as? [String:Any], let responseCode = responseDict["code"] as? String {
+                if responseCode == "000" {
+                    successClosure()
+                }
+            }
         }, errorClosure: errorClosure)
     }
 }

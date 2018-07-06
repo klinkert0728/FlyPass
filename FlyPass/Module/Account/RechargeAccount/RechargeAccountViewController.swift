@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Crashlytics
 
 enum collectionViewCellConstant {
     static let rechargeCell = "cell"
@@ -18,6 +19,10 @@ class RechargeAccountViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var amountToRecharge: UITextField!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var rechargeTitle: UILabel!
+    @IBOutlet weak var rechargeAmount: UITextField!
+    @IBOutlet weak var rechargeButton: UIButton!
+    
     private var indexOfCellBeforeDragging = 0
     let viewModel = RechargeAccountViewModel()
     
@@ -33,12 +38,16 @@ class RechargeAccountViewController: BaseViewController {
     
     override func configureAppearance() {
         super.configureAppearance()
+        rechargeTitle.text          = "Recharge Amount"
+        rechargeAmount.placeholder  = "Amount"
+        rechargeButton.setTitle("Recharge", for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     fileprivate func calculateSectionInset() -> CGFloat {
         let deviceIsIpad                    = UIDevice.current.userInterfaceIdiom == .pad
@@ -78,13 +87,20 @@ class RechargeAccountViewController: BaseViewController {
     }
     
     @IBAction func RechargeAction(_ sender: Any) {
-        viewModel.rechargeAccount(amountToRecharege: 10000, selectedAccount: viewModel.accountDetails.first!, successClosure: {
-            print("")
+        Crashlytics.sharedInstance().crash()
+
+        guard let amount = Int(amountToRecharge.text!) else {
+            return
+        }
+        if amount < 10000 {
+            SVProgressHUD.showInfo(withStatus: "Value should be at least 10000")
+        }
+        viewModel.rechargeAccount(amountToRecharege: amount, selectedAccount: viewModel.accountDetails.first!, successClosure: {
+            SVProgressHUD.showInfo(withStatus: "Successful recharge")
         }, errorClosure: {error in
             
             
         })
-        print("hi")
     }
     
 }
@@ -95,13 +111,8 @@ extension RechargeAccountViewController:UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell            = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellConstant.rechargeCell, for: indexPath) as! RechargeAccountCollectionViewCell
         let currentAccount  = viewModel.accountDetails[indexPath.row]
-        cell.setupInfoForAccount(account: currentAccount)
-        
+        cell.setupInfoForAccount(account: currentAccount, selected:viewModel.checkIfAccountIsSelected(for: indexPath))
         return cell
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -140,6 +151,10 @@ extension RechargeAccountViewController:UICollectionViewDelegate, UICollectionVi
             collectionViewLayout.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectedIndexForAccount = indexPath
     }
 }
 

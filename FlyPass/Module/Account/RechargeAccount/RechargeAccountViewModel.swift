@@ -10,6 +10,7 @@ import UIKit
 
 class RechargeAccountViewModel  {
     var accountDetails:[RechargeAccount] = []
+    var selectedIndexForAccount:IndexPath?
     
     func getAccountRechargeDetails(successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error) ->()) {
         RechargeAccount.getRechargeOptions(endPoint: flypassEndpoint.accountOptions(), successClosure: { (options:[RechargeAccount]) in
@@ -22,9 +23,18 @@ class RechargeAccountViewModel  {
     }
     
     func rechargeAccount(amountToRecharege amount:Int,selectedAccount account:RechargeAccount,successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error) ->()) {
-        RechargeAccount.rechargeAccount(endPoint: .rechargeAccount(rechargeAmount: amount, rechargeAccount: account), successClosure: { (rechargedAccount:[RechargeAccount]) in
-            print(rechargedAccount)
+        RechargeAccount.rechargeAccount(endPoint: .rechargeAccount(rechargeAmount: amount, rechargeAccount: account), successClosure: {
+            successClosure()
         }, errorClosure: errorClosure)
+        
+    }
+    
+    func checkIfAccountIsSelected(for indexPath:IndexPath) -> Bool {
+        guard let selectedIndex = selectedIndexForAccount else {
+            return false
+        }
+        
+        return indexPath == selectedIndex
         
     }
 }

@@ -158,6 +158,7 @@
                                                         <constraint firstItem="klU-nv-pNU" firstAttribute="leading" secondItem="Mda-ho-bUp" secondAttribute="leading" id="djt-Rt-aIh"/>
                                                         <constraint firstItem="klU-nv-pNU" firstAttribute="top" secondItem="Mda-ho-bUp" secondAttribute="bottom" constant="8" id="hjX-vb-Vpq"/>
                                                         <constraint firstAttribute="trailing" secondItem="Mda-ho-bUp" secondAttribute="trailing" constant="20" id="k9Z-Fr-4Gr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="klU-nv-pNU" secondAttribute="bottom" priority="999" constant="8" id="tfh-VJ-XEP"/>
                                                         <constraint firstItem="klU-nv-pNU" firstAttribute="trailing" secondItem="Mda-ho-bUp" secondAttribute="trailing" id="vlu-yL-YHm"/>
                                                         <constraint firstItem="Mda-ho-bUp" firstAttribute="leading" secondItem="ZKc-dC-XXW" secondAttribute="leading" constant="5" id="yAc-CX-87n"/>
                                                     </constraints>
@@ -382,6 +383,7 @@
                                         <connections>
                                             <outlet property="accountNumber" destination="khH-ul-3tj" id="HHu-yg-tG4"/>
                                             <outlet property="accountOwner" destination="1V7-7k-aja" id="h92-Yb-oPi"/>
+                                            <outlet property="selectedImage" destination="sY6-LF-dKL" id="uUv-sE-91E"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -389,8 +391,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-wu-Wvd">
                                 <rect key="frame" x="20" y="244" width="335" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount to recharge:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITS-30-17d">
-                                        <rect key="frame" x="10" y="16" width="157" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITS-30-17d">
+                                        <rect key="frame" x="10" y="16" width="0.0" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="lCa-F2-U4l"/>
                                         </constraints>
@@ -398,8 +400,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xH-0b-plK">
-                                        <rect key="frame" x="175" y="12" width="152" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xH-0b-plK">
+                                        <rect key="frame" x="18" y="12" width="309" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="s6m-k4-M5o"/>
                                         </constraints>
@@ -423,7 +425,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7sM-2U-rbh"/>
                                 </constraints>
-                                <state key="normal" title="Recharge"/>
                                 <connections>
                                     <action selector="RechargeAction:" destination="o7U-gp-Bye" eventType="touchUpInside" id="CJ6-6G-I7W"/>
                                 </connections>
@@ -449,6 +450,9 @@
                         <outlet property="amountToRecharge" destination="2xH-0b-plK" id="JhT-Re-ZNg"/>
                         <outlet property="collectionView" destination="djy-qZ-xJl" id="teh-Bh-VhY"/>
                         <outlet property="collectionViewLayout" destination="bhx-0F-jSz" id="dms-Pj-czE"/>
+                        <outlet property="rechargeAmount" destination="2xH-0b-plK" id="zcv-IA-J9z"/>
+                        <outlet property="rechargeButton" destination="Jqz-aY-VT2" id="Lnx-9w-gRs"/>
+                        <outlet property="rechargeTitle" destination="ITS-30-17d" id="QZD-YF-2Pz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MR-tf-rZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>

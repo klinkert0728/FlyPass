@@ -11,11 +11,14 @@ import UIKit
 class RechargeAccountCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var accountNumber: UILabel!
     @IBOutlet weak var accountOwner: UILabel!
+    @IBOutlet weak var selectedImage: UIImageView!
     
     
-    func setupInfoForAccount(account:RechargeAccount) {
-        accountOwner.text   = account.secureUser?.person?.fullname
-        accountNumber.text  = accountNumber.text! + " \(account.accountNumber)"
+    func setupInfoForAccount(account:RechargeAccount,selected:Bool) {
+        accountOwner.text       = account.secureUser?.person?.fullname
+        accountNumber.text      = accountNumber.text! + " \(account.accountNumber)"
+        selectedImage.isHidden  = !selected
+        selectedImage.image     = UIImage(named: "login")
     }
     
 }
