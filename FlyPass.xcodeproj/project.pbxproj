@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F2F00D120F3B9870020EFC5 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F00D020F3B9870020EFC5 /* KeychainHelper.swift */; };
+		6F2F00D420F3E28B0020EFC5 /* TollsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F00D320F3E28B0020EFC5 /* TollsHelper.swift */; };
 		6F8C470820E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */; };
 		6FA1C7C920C836570042AD98 /* RechargeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7C820C836570042AD98 /* RechargeAccount.swift */; };
 		6FA1C7CD20C83C300042AD98 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7CC20C83C300042AD98 /* Person.swift */; };
@@ -59,6 +60,7 @@
 		32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F2F00D020F3B9870020EFC5 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		6F2F00D320F3E28B0020EFC5 /* TollsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TollsHelper.swift; sourceTree = "<group>"; };
 		6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FA1C7C820C836570042AD98 /* RechargeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccount.swift; sourceTree = "<group>"; };
 		6FA1C7CC20C83C300042AD98 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */,
 				96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */,
 				6F2F00D020F3B9870020EFC5 /* KeychainHelper.swift */,
+				6F2F00D320F3E28B0020EFC5 /* TollsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -368,6 +371,11 @@
 					96BDAFA320A2191C00D4A42E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					96BDAFB720A2191C00D4A42E = {
 						CreatedOnToolsVersion = 9.2;
@@ -532,6 +540,7 @@
 				968E1F4920B46F4200DAE9CB /* RechargeAccountViewModel.swift in Sources */,
 				96BDAFE420A2349F00D4A42E /* ResumeAccountView.swift in Sources */,
 				96BDAFDD20A22FC800D4A42E /* FlypassExtensions.swift in Sources */,
+				6F2F00D420F3E28B0020EFC5 /* TollsHelper.swift in Sources */,
 				96BDAFE920A242EB00D4A42E /* ResumeAccountTableViewCell.swift in Sources */,
 				96BDAFCB20A21D5300D4A42E /* APIEndpoint.swift in Sources */,
 				6FA1C7CF20C83C600042AD98 /* SecureUser.swift in Sources */,

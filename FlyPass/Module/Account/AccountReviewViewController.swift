@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Crashlytics
+import CoreLocation
 
 enum tableViewConstants {
     static let movementCell = "movementCell"
@@ -19,10 +20,12 @@ class AccountReviewViewController: BaseViewController {
     @IBOutlet weak var movementTableview: UITableView!
     @IBOutlet weak var resumeAccountView: ResumeAccountView!
     
-    var viewModel = AccountReviewViewControllerViewModel()
+    let viewModel       = AccountReviewViewControllerViewModel()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLocationManager()
         initViewModel()
     }
     
@@ -130,3 +133,41 @@ extension AccountReviewViewController:UITableViewDelegate, UITableViewDataSource
         return "History"
     }
 }
+
+//MARK: Location Manager
+extension AccountReviewViewController:CLLocationManagerDelegate {
+    
+    fileprivate func configureLocationManager() {
+        locationManager.delegate                        = self
+        locationManager.desiredAccuracy                 = kCLLocationAccuracyKilometer
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.activityType                    = CLActivityType.automotiveNavigation
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        configureRegions()
+    }
+    
+    fileprivate func configureRegions() {
+        let region = CLCircularRegion(center: tollsLocation.lasPalmasAirport.tollLocation(), radius: 20, identifier: tollsLocation.lasPalmasAirport.rawValue)
+        region.notifyOnExit     = true
+        region.notifyOnEntry    = true
+        locationManager.startMonitoring(for: region)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for location in locations {
+            print("\(location.coordinate) Hola ")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Enter \(region.identifier)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("Exit \(region.identifier)")
+    }
+    
+}
+
