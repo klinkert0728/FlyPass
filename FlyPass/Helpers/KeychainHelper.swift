@@ -28,10 +28,10 @@ fileprivate enum KeychainServices:String {
 
 public extension Keychain {
     
-    class func saveUserToken(token:String,completitionHandler:@escaping ()->()) {
+    class func saveUserToken(token:String,completionHandler:@escaping ()->()) {
         let tokenKeyChain = Keychain(service: KeychainServices.tokenKeychain.rawValue)
         tokenKeyChain["token"] = token
-        completitionHandler()
+        completionHandler()
     }
     
     class func getUserToken() -> String?  {
