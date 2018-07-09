@@ -84,7 +84,7 @@ class User: Object,Mappable {
                 realm.add(user)
             })
             let token   = (jsonDict["access_token"] as? String) ?? ""
-            Keychain.saveUserToken(token: token, completionHandler: successCallback)
+            Keychain.saveString(param: token, forKeychainService: KeychainServices.tokenKeychain, completionHandler: successCallback)
         }, errorClosure: {error in
             errorCallback(error)
         })

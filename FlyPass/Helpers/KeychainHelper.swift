@@ -9,12 +9,12 @@
 import Foundation
 import KeychainAccess
 
-fileprivate enum KeychainServices:String {
+public enum KeychainServices:String {
     case tokenKeychain
     case defaultKeyChain
     
     
-    func serviceTitle() -> String {
+    fileprivate func serviceTitle() -> String {
         let bundle  = Bundle.main.bundleIdentifier!
         switch self {
         case .tokenKeychain:
@@ -28,9 +28,9 @@ fileprivate enum KeychainServices:String {
 
 public extension Keychain {
     
-    class func saveUserToken(token:String,completionHandler:@escaping ()->()) {
+    class func saveString(param:String,forKeychainService:KeychainServices,completionHandler:@escaping ()->()) {
         let tokenKeyChain = Keychain(service: KeychainServices.tokenKeychain.rawValue)
-        tokenKeyChain["token"] = token
+        tokenKeyChain["token"] = param
         completionHandler()
     }
     
