@@ -18,7 +18,7 @@ target 'FlyPass' do
     pod 'AlamofireObjectMapper'
     pod 'Alamofire'
     pod 'SBPickerSelector'
-
+    pod 'KeychainAccess'
   # Pods for FlyPass
 
   target 'FlyPassTests' do

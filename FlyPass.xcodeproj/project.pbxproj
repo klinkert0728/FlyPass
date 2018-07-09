@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2F00D120F3B9870020EFC5 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F00D020F3B9870020EFC5 /* KeychainHelper.swift */; };
 		6F8C470820E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */; };
 		6FA1C7C920C836570042AD98 /* RechargeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7C820C836570042AD98 /* RechargeAccount.swift */; };
 		6FA1C7CD20C83C300042AD98 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C7CC20C83C300042AD98 /* Person.swift */; };
@@ -57,6 +58,7 @@
 		2AF3ECFED3D79D6BD5B8D6B7 /* Pods-FlyPassTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32B2EA62E7FA01848258A28E /* Pods_FlyPassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyPassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5173C99D17026183B8DB1B6A /* Pods-FlyPassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyPassTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlyPassTests/Pods-FlyPassTests.release.xcconfig"; sourceTree = "<group>"; };
+		6F2F00D020F3B9870020EFC5 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		6F8C470720E681E800F7A8FD /* RechargeAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FA1C7C820C836570042AD98 /* RechargeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeAccount.swift; sourceTree = "<group>"; };
 		6FA1C7CC20C83C300042AD98 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				96BDAFDC20A22FC800D4A42E /* FlypassExtensions.swift */,
 				96BDAFF420A2603B00D4A42E /* NavigationHelper.swift */,
 				96D1884420A4E13700F0D3D8 /* UIColorHelper.swift */,
+				6F2F00D020F3B9870020EFC5 /* KeychainHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlyPass/Pods-FlyPass-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -487,6 +491,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -521,6 +526,7 @@
 				96BDAFD020A2297900D4A42E /* User.swift in Sources */,
 				968E1F4720B46F2A00DAE9CB /* RechargeAccountViewController.swift in Sources */,
 				96BDAFC920A21CDB00D4A42E /* APIClient.swift in Sources */,
+				6F2F00D120F3B9870020EFC5 /* KeychainHelper.swift in Sources */,
 				96D1884320A4954100F0D3D8 /* SettingsTableViewController.swift in Sources */,
 				96BDAFD920A22F6F00D4A42E /* RealmHelper.swift in Sources */,
 				968E1F4920B46F4200DAE9CB /* RechargeAccountViewModel.swift in Sources */,
