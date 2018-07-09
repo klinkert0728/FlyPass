@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import KeychainAccess
 
 fileprivate struct requestConstants {
     fileprivate enum constantUrls {
@@ -108,7 +109,7 @@ extension flypassEndpoint:APIEndpoint {
         case .login(userDocument: _, password: _):
             return ["Authorization":"Basic Zmx5cGFzczpSbXg1ZEdWamFDNHlNREUz"]
         default:
-            let token = User.currentUser?.token ?? ""
+            let token = Keychain.getUserToken() ?? ""
             return ["Authorization": "Bearer \(token)","Content-Type":"application/json"]
         }
     }

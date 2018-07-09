@@ -6,6 +6,7 @@ PODS:
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Fabric (1.7.6)
+  - KeychainAccess (3.1.1)
   - ObjectMapper (3.1.0)
   - ReachabilitySwift (3)
   - Realm (3.5.0):
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - Crashlytics
   - Fabric
+  - KeychainAccess
   - ObjectMapper
   - ReachabilitySwift (~> 3)
   - RealmSwift
@@ -44,6 +46,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Crashlytics
     - Fabric
+    - KeychainAccess
     - ObjectMapper
     - ReachabilitySwift
     - Realm
@@ -60,6 +63,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
@@ -71,6 +75,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
 
-PODFILE CHECKSUM: 3c144f660e52a991dbc7475f76fdb1a5a56563fb
+PODFILE CHECKSUM: 067146f0b706d9a2576a9cc26f8392732ff8efcb
 
 COCOAPODS: 1.5.3

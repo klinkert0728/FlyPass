@@ -9,12 +9,12 @@
 import UIKit
 import RealmSwift
 import ObjectMapper
+import KeychainAccess
 
 @objcMembers
 class User: Object,Mappable {
     
     dynamic var documentId                  = ""
-    dynamic var token                       = ""
     dynamic var availableAmount             = 0.0
     dynamic var limitAmountLow              = 0.0
     dynamic var minimumRechargeAmount       = 0.0
@@ -62,12 +62,6 @@ class User: Object,Mappable {
     
     class func getUserInformation(successCallback:@escaping (_ user:User)->(),errorCallback:@escaping (_ error:Error)->()) {
         APIClient.sharedClient.requestObject(endpoint: flypassEndpoint.userInformation(), completionHandler: { (user:User) in
-            Realm.update(updateClosure: { (realm) in
-                if let currentUser = realm.objects(User.self).first {
-                    user.token  = currentUser.token
-                    realm.add(user, update: true)
-                }
-            })
             successCallback(user)
         }, errorClosure: {error in
             if (error as NSError).code == 401 {
@@ -86,10 +80,10 @@ class User: Object,Mappable {
             Realm.update(updateClosure: { (realm) in
                 let user            = User()
                 user.documentId     = documentId
-                user.token          = (jsonDict["access_token"] as? String) ?? ""
                 realm.add(user)
             })
-            successCallback()
+            let token   = (jsonDict["access_token"] as? String) ?? ""
+            Keychain.saveUserToken(token: token, completitionHandler: successCallback)
         }, errorClosure: {error in
             errorCallback(error)
         })
