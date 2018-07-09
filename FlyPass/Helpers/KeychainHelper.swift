@@ -9,6 +9,10 @@
 import Foundation
 import KeychainAccess
 
+public enum keychainConstants:String {
+    case token 
+}
+
 public enum KeychainServices:String {
     case tokenKeychain
     case defaultKeyChain
@@ -28,20 +32,20 @@ public enum KeychainServices:String {
 
 public extension Keychain {
     
-    class func saveString(param:String,forKeychainService:KeychainServices,completionHandler:@escaping ()->()) {
-        let tokenKeyChain = Keychain(service: KeychainServices.tokenKeychain.rawValue)
-        tokenKeyChain["token"] = param
+    class func saveString(inKey key:String, value:String,forKeychainService service:KeychainServices,completionHandler:@escaping ()->()) {
+        let tokenKeyChain = Keychain(service: service.rawValue)
+        tokenKeyChain[key] = value
         completionHandler()
     }
     
-    class func getUserToken() -> String?  {
-        let tokenKeyChain = Keychain(service: KeychainServices.tokenKeychain.rawValue)
-        return tokenKeyChain["token"]
+    class func getData(for key:String,andKeychainService service:KeychainServices) -> String?  {
+        let tokenKeyChain = Keychain(service: service.rawValue)
+        return tokenKeyChain[key]
     }
     
-    class func removeUserToken() {
-        let tokenKeyChain = Keychain(service: KeychainServices.tokenKeychain.rawValue)
-        tokenKeyChain["token"] = nil
+    class func removeData(key:String,inKeychainService service:KeychainServices) {
+        let tokenKeyChain = Keychain(service: service.rawValue)
+        tokenKeyChain[key] = nil
     }
     
 }

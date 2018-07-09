@@ -109,7 +109,7 @@ extension flypassEndpoint:APIEndpoint {
         case .login(userDocument: _, password: _):
             return ["Authorization":"Basic Zmx5cGFzczpSbXg1ZEdWamFDNHlNREUz"]
         default:
-            let token = Keychain.getUserToken() ?? ""
+            let token = Keychain.getData(for:keychainConstants.token.rawValue, andKeychainService: KeychainServices.tokenKeychain) ?? ""
             return ["Authorization": "Bearer \(token)","Content-Type":"application/json"]
         }
     }

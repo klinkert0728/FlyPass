@@ -39,7 +39,7 @@ class User: Object,Mappable {
         Realm.update { (realm) in
             realm.delete(realm.objects(User.self))
         }
-        Keychain.removeUserToken()
+        Keychain.removeData(key: keychainConstants.token.rawValue, inKeychainService: KeychainServices.tokenKeychain)
     }
     
     convenience required init?(map: Map) {
@@ -84,7 +84,7 @@ class User: Object,Mappable {
                 realm.add(user)
             })
             let token   = (jsonDict["access_token"] as? String) ?? ""
-            Keychain.saveString(param: token, forKeychainService: KeychainServices.tokenKeychain, completionHandler: successCallback)
+            Keychain.saveString(inKey: keychainConstants.token.rawValue, value: token, forKeychainService: .tokenKeychain, completionHandler: successCallback)
         }, errorClosure: {error in
             errorCallback(error)
         })
