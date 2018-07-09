@@ -39,4 +39,9 @@ public extension Keychain {
         return tokenKeyChain["token"]
     }
     
+    class func removeUserToken() {
+        let tokenKeyChain = Keychain(service: KeychainServices.tokenKeychain.rawValue)
+        tokenKeyChain["token"] = nil
+    }
+    
 }

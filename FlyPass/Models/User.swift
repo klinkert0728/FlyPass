@@ -39,6 +39,7 @@ class User: Object,Mappable {
         Realm.update { (realm) in
             realm.delete(realm.objects(User.self))
         }
+        Keychain.removeUserToken()
     }
     
     convenience required init?(map: Map) {
