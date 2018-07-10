@@ -9,15 +9,51 @@
 import Foundation
 import CoreLocation
 
-public enum tollsLocation:String {
-    case lasPalmasAirport
-    
-    func tollLocation() -> CLLocationCoordinate2D {
-        switch self {
-        case .lasPalmasAirport:
-            return CLLocationCoordinate2D(latitude: 6.170875, longitude: -75.4809139)
-        default:
-            return CLLocationCoordinate2D(latitude: 1, longitude: 1)
-        }
+fileprivate protocol tollsLocationProtocol {
+    var id:String {get}
+    var center:CLLocationCoordinate2D { get }
+    var radius:Double { get }
+}
+
+extension tollsLocationProtocol {
+    var radius:Double {
+        return 20.0
     }
 }
+
+public enum tollsLocation:String {
+    case lasPalmasAirport
+    case viscaya
+    
+    fileprivate func tollCenter() -> CLLocationCoordinate2D {
+        switch self {
+        case .lasPalmasAirport:
+            return CLLocationCoordinate2D(latitude: 6.170875, longitude: -75.4766036)
+        default:
+            return CLLocationCoordinate2D(latitude: 6.2079780819689327, longitude: -75.5635904880711)
+        }
+    }
+    
+    func circularRegion() -> CLCircularRegion {
+        return tollsRegion(id: self.rawValue).circularRegion()
+    }
+}
+
+fileprivate struct tollsRegion:tollsLocationProtocol {
+   
+    var id:String
+    
+    var center: CLLocationCoordinate2D {
+        switch id {
+        case tollsLocation.lasPalmasAirport.rawValue:
+            return tollsLocation.lasPalmasAirport.tollCenter()
+        default:
+           return tollsLocation.viscaya.tollCenter()
+        }
+    }
+    
+    func circularRegion() -> CLCircularRegion {
+        return CLCircularRegion(center: center, radius: radius, identifier: id)
+    }
+}
+

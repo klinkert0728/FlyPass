@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Appearance.configureAppAppearance()
+        if launchOptions?[UIApplicationLaunchOptionsKey.location] != nil {
+            NSLog( "Holaa sii")
+            print("holaaaaaaa funcionaa")
+        }
         Fabric.with([Crashlytics.self])
         return true
     }

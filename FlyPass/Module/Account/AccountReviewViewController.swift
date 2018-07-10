@@ -149,7 +149,7 @@ extension AccountReviewViewController:CLLocationManagerDelegate {
     }
     
     fileprivate func configureRegions() {
-        let region = CLCircularRegion(center: tollsLocation.lasPalmasAirport.tollLocation(), radius: 20, identifier: tollsLocation.lasPalmasAirport.rawValue)
+        let region              = tollsLocation.lasPalmasAirport.circularRegion()
         region.notifyOnExit     = true
         region.notifyOnEntry    = true
         locationManager.startMonitoring(for: region)
@@ -163,10 +163,12 @@ extension AccountReviewViewController:CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("Enter \(region.identifier)")
+        locationManager.stopMonitoring(for: region)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("Exit \(region.identifier)")
+        locationManager.stopMonitoring(for:region)
     }
     
 }
