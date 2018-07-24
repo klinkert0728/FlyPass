@@ -9,6 +9,7 @@
 import Foundation
 import SVProgressHUD
 import RealmSwift
+import ReachabilitySwift
 
 protocol AccountReviewViewModel {
     var movements:[UserMovements] { get }
@@ -42,13 +43,19 @@ class AccountReviewViewControllerViewModel:AccountReviewViewModel {
         }, errorCallback: errorClosure)
     }
     
-    func fetchUserInformation(successClosure:@escaping ()->(),errorClosure:@escaping (_ error:Error) ->()) {
-        if !User.isLoggedIn { return }
-        User.getUserInformation(successCallback: { (currentUser) in
-            self.user = currentUser
-            successClosure()
-        }, errorCallback: { error in
-           errorClosure(error)
-        })
+    func fetchUserInformation(completitionHandler:@escaping (_ error:Error?)->()) {
+        if !User.isLoggedIn {
+            return
+        }
+        
+        User.getUserInformation { (user, error) in
+            guard let error = error else {
+                self.user = user
+                completitionHandler(nil)
+                return
+            }
+            self.user = user
+            completitionHandler(error)
+        }
     }
 }

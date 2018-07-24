@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import ObjectMapper
 import KeychainAccess
+import ReachabilitySwift
 
 @objcMembers
 class User: Object,Mappable {
@@ -61,14 +62,32 @@ class User: Object,Mappable {
     }
     
     
-    class func getUserInformation(successCallback:@escaping (_ user:User)->(),errorCallback:@escaping (_ error:Error)->()) {
-        APIClient.sharedClient.requestObject(endpoint: flypassEndpoint.userInformation(), completionHandler: { (user:User) in
-            successCallback(user)
-        }, errorClosure: {error in
-            if (error as NSError).code == 401 {
-                User.logOut()
+    class func getUserInformation(userCompletionHandler:@escaping (_ user:User?, _ error:Error?)->()) {
+        let reachibility = Reachability()!
+        if !reachibility.isReachable {
+            var user:User? = nil
+            Realm.update { (realm) in
+                user = realm.objects(User.self).last
             }
-            errorCallback(error)
+            userCompletionHandler(user,nil)
+            return
+        }
+        
+        APIClient.sharedClient.requestObject(endpoint: flypassEndpoint.userInformation(), completionHandler: { (user:User) in
+            var currentUser:User? = nil
+            Realm.update(updateClosure: { (realm) in
+                currentUser = realm.objects(User.self).first
+                currentUser = user
+                currentUser?.documentId = user.person?.documentId ?? ""
+                realm.add(currentUser!, update: true)
+            })
+            userCompletionHandler(currentUser,nil)
+        }, errorClosure: { error in
+            var currentUser:User? = nil
+            Realm.update(updateClosure: { (realm) in
+                currentUser = realm.objects(User.self).first
+            })
+            userCompletionHandler(currentUser,error)
         })
     }
     
@@ -113,17 +132,33 @@ class UserMovements:Object,Mappable {
         lisencePlate        <- map["licensePlate"]
         date                <- (map["date"],FlypassDateTransform())
         movementDescription <- map["description"]
-        movementId          <- map["movemnentId"]
+        movementId          <- map["reference"]
     }
     
-    class func getUserMovements(page:Int,successCallback:@escaping (_ user:[UserMovements])->(),errorCallback:@escaping (_ error:Error)->()) {
+    class func getMovementsFromDataBase(completitionHandler: @escaping (_ movements:[UserMovements]) -> ()) {
+        var movements = [UserMovements]()
+        Realm.update { (realm) in
+            let movementsResult = realm.objects(UserMovements.self)
+            movements           = Array(movementsResult)
+        }
+        completitionHandler(movements)
+    }
+    
+    class func getUserMovements(page:Int,successCallback:@escaping (_ movements:[UserMovements])->(),errorCallback:@escaping (_ error:Error)->()) {
+        let reachibility = Reachability()!
+        if !reachibility.isReachable {
+            UserMovements.getMovementsFromDataBase { (userMovements:[UserMovements]) in
+                successCallback(userMovements)
+            }
+            return
+        }
         
         APIClient.sharedClient.requestArrayOfObject(endpoint: flypassEndpoint.getUserMovements(page: page), keyPath: "body.content", completionHandler: { (movements:[UserMovements]) in
+            Realm.update(updateClosure: { (realm) in
+                realm.add(movements, update: true)
+            })
             successCallback(movements)
         }, errorClosure: { error in
-            if (error as NSError).code == 401 {
-                User.logOut()
-            }
             errorCallback(error)
         })
     }

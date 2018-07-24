@@ -9,21 +9,20 @@
 import UIKit
 import Fabric
 import Crashlytics
+import CoreLocation
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Appearance.configureAppAppearance()
-        if launchOptions?[UIApplicationLaunchOptionsKey.location] != nil {
-            NSLog( "Holaa sii")
-            print("holaaaaaaa funcionaa")
-        }
         Fabric.with([Crashlytics.self])
+        let center                      = UNUserNotificationCenter.current()
+        center.delegate                 = self
         return true
     }
 
@@ -52,3 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate:UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound,.badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+}

@@ -87,8 +87,6 @@ class RechargeAccountViewController: BaseViewController {
     }
     
     @IBAction func RechargeAction(_ sender: Any) {
-        Crashlytics.sharedInstance().crash()
-
         guard let amount = Int(amountToRecharge.text!) else {
             return
         }
