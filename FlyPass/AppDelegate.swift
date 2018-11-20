@@ -21,8 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Appearance.configureAppAppearance()
         Fabric.with([Crashlytics.self])
-        let center                      = UNUserNotificationCenter.current()
-        center.delegate                 = self
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { granted, error in
+            DispatchQueue.main.async {
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+                else {
+                    //Do stuff if unsuccessful...
+                }
+            }
+        })
         return true
     }
 

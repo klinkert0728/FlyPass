@@ -200,7 +200,7 @@ extension AccountReviewViewController {
             region.notifyOnExit             = true
             let notificationTrigger         = UNLocationNotificationTrigger(region:region, repeats: true)
             // Create Notification Request
-            let notificationRequest         = UNNotificationRequest(identifier: toll.tollName(), content: notificationContent, trigger: notificationTrigger)
+            let notificationRequest         = UNNotificationRequest(identifier:UUID().uuidString, content: notificationContent, trigger: notificationTrigger)
             locationManager.startMonitoring(for: region)
             // Add Request to User Notification Center
             UNUserNotificationCenter.current().add(notificationRequest) { (error) in
